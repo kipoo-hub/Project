@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>LifeSure - Life Insurance Website Template</title>
+    <title>Sicepu - Pengaduan & Aspirasi Rakya</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -50,7 +50,8 @@
                     <div class="d-flex flex-wrap">
                         <div class="border-end border-primary pe-3">
                             <a href="#" class="text-muted small"><i
-                                    class="fas fa-map-marker-alt text-primary me-2"></i>Jl. Umban Sari Publik No.12, Pekanbaru</a>
+                                    class="fas fa-map-marker-alt text-primary me-2"></i>Jl. Umban Sari Publik No.12,
+                                Pekanbaru</a>
                         </div>
                         <div class="ps-3">
                             <a href="mailto:example@gmail.com" class="text-muted small"><i
@@ -71,7 +72,6 @@
                                         class="fas fa-globe-europe text-primary me-2"></i> English</small></a>
                             <div class="dropdown-menu rounded">
                                 <a href="#" class="dropdown-item">English</a>
-                                <a href="#" class="dropdown-item">Bangla</a>
                                 <a href="#" class="dropdown-item">French</a>
                                 <a href="#" class="dropdown-item">Spanish</a>
                                 <a href="#" class="dropdown-item">Arabic</a>
@@ -90,51 +90,41 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="#" class="navbar-brand p-0">
                     <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> Sicepu</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
+<div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-0 mx-lg-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="blog.html" class="nav-item nav-link">Blog</a>
+                        <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
+                        <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                        <a href="{{ route('services') }}" class="nav-item nav-link">Services</a>
+                        <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-bs-toggle="dropdown">
                                 <span class="dropdown-toggle">Pages</span>
                             </a>
                             <div class="dropdown-menu">
-                                <a href="feature.html" class="dropdown-item">Our Features</a>
-                                <a href="team.html" class="dropdown-item">Our team</a>
-                                <a href="FAQ.html" class="dropdown-item">FAQs</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
+                                <a href="#" class="dropdown-item">Our Features</a>
+                                <a href="#" class="dropdown-item">Our team</a>
+                                <a href="#" class="dropdown-item">FAQs</a>
+                                <a href="#" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+
+                        <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                         <div class="nav-btn px-3">
                             <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0"
                                 data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                     class="fas fa-search"></i></button>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a
+                            <a href="{{ route('quote') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a
                                 Quote</a>
                         </div>
                     </div>
                 </div>
-                <div class="d-none d-xl-flex flex-shrink-0 ps-4">
-                    <a href="#" class="btn btn-light btn-lg-square rounded-circle position-relative wow tada"
-                        data-wow-delay=".9s">
-                        <i class="fa fa-phone-alt fa-2x"></i>
-                        <div class="position-absolute" style="top: 7px; right: 12px;">
-                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
-                        </div>
-                    </a>
-                    <div class="d-flex flex-column ms-3">
-                        <span>Call to Our Experts</span>
-                        <a href="tel:+ 0123 456 7890"><span class="text-dark">Free : (+62) 822-9270-7434</span></a>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -649,81 +639,94 @@
     <!-- Blog End -->
 
     <!-- Team Start -->
-<div class="container-fluid team pb-5">
-    <div class="container pb-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-            <h4 class="text-primary">Tim Kami</h4>
-            <h1 class="display-4 mb-4">Kenali Anggota Tim Sicepu</h1>
-            <p class="mb-0">Tim kami siap menerima dan menindaklanjuti pengaduan serta aspirasi Anda dengan profesionalisme dan empati.</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('assets/img/team/kipo.jpg') }}" class="img-fluid rounded-top w-100" alt="Kipo">
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-title p-4">
-                        <h4 class="mb-0">Kipo</h4>
-                        <p class="mb-0">Koordinator Tim</p>
-                    </div>
-                </div>
+    <div class="container-fluid team pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">Tim Kami</h4>
+                <h1 class="display-4 mb-4">Kenali Anggota Tim Sicepu</h1>
+                <p class="mb-0">Tim kami siap menerima dan menindaklanjuti pengaduan serta aspirasi Anda dengan
+                    profesionalisme dan empati.</p>
             </div>
 
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('assets/img/team/johan.jpg') }}" class="img-fluid rounded-top w-100" alt="Johan">
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i class="fab fa-instagram"></i></a>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="{{ asset('assets/img/team/kipo.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Kipo">
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="team-title p-4">
-                        <h4 class="mb-0">Johan</h4>
-                        <p class="mb-0">Penyelaras Operasional</p>
+                        <div class="team-title p-4">
+                            <h4 class="mb-0">Kipo</h4>
+                            <p class="mb-0">Koordinator Tim</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('assets/img/team/there.jpg') }}" class="img-fluid rounded-top w-100" alt="There">
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i class="fab fa-facebook-f"></i></a>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="{{ asset('assets/img/team/johan.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Johan">
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="team-title p-4">
-                        <h4 class="mb-0">There</h4>
-                        <p class="mb-0">Analis & Verifikator</p>
+                        <div class="team-title p-4">
+                            <h4 class="mb-0">Johan</h4>
+                            <p class="mb-0">Penyelaras Operasional</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('assets/img/team/vera.jpg') }}" class="img-fluid rounded-top w-100" alt="Vera">
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="{{ asset('assets/img/team/there.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="There">
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-title p-4">
+                            <h4 class="mb-0">There</h4>
+                            <p class="mb-0">Analis & Verifikator</p>
                         </div>
                     </div>
-                    <div class="team-title p-4">
-                        <h4 class="mb-0">Vera</h4>
-                        <p class="mb-0">Pengelola Kasus</p>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="{{ asset('assets/img/team/vera.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Vera">
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href="#"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-title p-4">
+                            <h4 class="mb-0">Vera</h4>
+                            <p class="mb-0">Pengelola Kasus</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <!-- Team End -->
 
     <!-- Footer Start -->
@@ -738,12 +741,18 @@
                                     <a href="{{ url('/') }}" class="p-0">
                                         <h3 class="text-white"><i class="fab fa-slack me-3"></i> Sicepu</h3>
                                     </a>
-                                    <p class="text-white mb-4">Sicepu adalah saluran resmi untuk menerima pengaduan dan aspirasi masyarakat. Kirim laporan, pantau status, dan dapatkan informasi tindak lanjut dari tim kami.</p>
+                                    <p class="text-white mb-4">Sicepu adalah saluran resmi untuk menerima pengaduan dan
+                                        aspirasi masyarakat. Kirim laporan, pantau status, dan dapatkan informasi tindak
+                                        lanjut dari tim kami.</p>
                                     <div class="footer-btn d-flex">
-                                        <a class="btn btn-md-square rounded-circle me-3" href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
-                                        <a class="btn btn-md-square rounded-circle me-3" href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                                        <a class="btn btn-md-square rounded-circle me-3" href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
-                                        <a class="btn btn-md-square rounded-circle me-0" href="#" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        <a class="btn btn-md-square rounded-circle me-3" href="#"
+                                            aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn btn-md-square rounded-circle me-3" href="#"
+                                            aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-md-square rounded-circle me-3" href="#"
+                                            aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                                        <a class="btn btn-md-square rounded-circle me-0" href="#"
+                                            aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -752,9 +761,12 @@
                                 <div class="footer-item">
                                     <h4 class="text-white mb-4">Tautan Cepat</h4>
                                     <a href="{{ url('/lapor') }}"><i class="fas fa-angle-right me-2"></i>Laporkan</a>
-                                    <a href="{{ url('/aspirasi') }}"><i class="fas fa-angle-right me-2"></i>Aspirasi</a>
-                                    <a href="{{ url('/status-laporan') }}"><i class="fas fa-angle-right me-2"></i>Cek Status</a>
-                                    <a href="{{ url('/panduan-lapor') }}"><i class="fas fa-angle-right me-2"></i>Panduan</a>
+                                    <a href="{{ url('/aspirasi') }}"><i
+                                            class="fas fa-angle-right me-2"></i>Aspirasi</a>
+                                    <a href="{{ url('/status-laporan') }}"><i class="fas fa-angle-right me-2"></i>Cek
+                                        Status</a>
+                                    <a href="{{ url('/panduan-lapor') }}"><i
+                                            class="fas fa-angle-right me-2"></i>Panduan</a>
                                     <a href="{{ url('/berita') }}"><i class="fas fa-angle-right me-2"></i>Berita</a>
                                     <a href="{{ url('/kontak') }}"><i class="fas fa-angle-right me-2"></i>Kontak</a>
                                 </div>
@@ -766,25 +778,34 @@
                                     <div class="row g-3">
                                         <div class="col-4">
                                             <div class="footer-instagram rounded">
-                                                <img src="{{ asset('assets/img/instagram-footer-1.jpg') }}" class="img-fluid w-100" alt="">
+                                                <img src="{{ asset('assets/img/instagram-footer-1.jpg') }}"
+                                                    class="img-fluid w-100" alt="">
                                                 <div class="footer-search-icon">
-                                                    <a href="{{ asset('assets/img/instagram-footer-1.jpg') }}" data-lightbox="footerInstagram-1" class="my-auto"><i class="fas fa-link text-white"></i></a>
+                                                    <a href="{{ asset('assets/img/instagram-footer-1.jpg') }}"
+                                                        data-lightbox="footerInstagram-1" class="my-auto"><i
+                                                            class="fas fa-link text-white"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="footer-instagram rounded">
-                                                <img src="{{ asset('assets/img/instagram-footer-2.jpg') }}" class="img-fluid w-100" alt="">
+                                                <img src="{{ asset('assets/img/instagram-footer-2.jpg') }}"
+                                                    class="img-fluid w-100" alt="">
                                                 <div class="footer-search-icon">
-                                                    <a href="{{ asset('assets/img/instagram-footer-2.jpg') }}" data-lightbox="footerInstagram-2" class="my-auto"><i class="fas fa-link text-white"></i></a>
+                                                    <a href="{{ asset('assets/img/instagram-footer-2.jpg') }}"
+                                                        data-lightbox="footerInstagram-2" class="my-auto"><i
+                                                            class="fas fa-link text-white"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="footer-instagram rounded">
-                                                <img src="{{ asset('assets/img/instagram-footer-3.jpg') }}" class="img-fluid w-100" alt="">
+                                                <img src="{{ asset('assets/img/instagram-footer-3.jpg') }}"
+                                                    class="img-fluid w-100" alt="">
                                                 <div class="footer-search-icon">
-                                                    <a href="{{ asset('assets/img/instagram-footer-3.jpg') }}" data-lightbox="footerInstagram-3" class="my-auto"><i class="fas fa-link text-white"></i></a>
+                                                    <a href="{{ asset('assets/img/instagram-footer-3.jpg') }}"
+                                                        data-lightbox="footerInstagram-3" class="my-auto"><i
+                                                            class="fas fa-link text-white"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -845,15 +866,19 @@
                 <div class="col-xl-3">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Berlangganan Update</h4>
-                        <p class="text-white mb-3">Dapatkan pemberitahuan tentang status laporan, panduan pelaporan, dan pengumuman penting.</p>
+                        <p class="text-white mb-3">Dapatkan pemberitahuan tentang status laporan, panduan pelaporan,
+                            dan pengumuman penting.</p>
                         <div class="position-relative rounded-pill mb-4">
-                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="email" placeholder="Masukkan email Anda">
-                            <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Daftar</button>
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="email"
+                                placeholder="Masukkan email Anda">
+                            <button type="button"
+                                class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Daftar</button>
                         </div>
 
                         <div class="d-flex flex-shrink-0">
                             <div class="footer-btn">
-                                <a href="#" class="btn btn-lg-square rounded-circle position-relative wow tada" data-wow-delay=".9s" aria-label="call">
+                                <a href="#" class="btn btn-lg-square rounded-circle position-relative wow tada"
+                                    data-wow-delay=".9s" aria-label="call">
                                     <i class="fa fa-phone-alt fa-2x"></i>
                                     <div class="position-absolute" style="top: 2px; right: 12px;">
                                         <span><i class="fa fa-comment-dots text-secondary"></i></span>
@@ -862,7 +887,8 @@
                             </div>
                             <div class="d-flex flex-column ms-3 flex-shrink-0">
                                 <span>Butuh Bantuan?</span>
-                                <a href="tel:+6281234567890"><span class="text-white">Hubungi Hotline: (+62) 822-9270-7434</span></a>
+                                <a href="tel:+6281234567890"><span class="text-white">Hubungi Hotline: (+62)
+                                        822-9270-7434</span></a>
                             </div>
                         </div>
 

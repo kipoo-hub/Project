@@ -1,0 +1,109 @@
+/* Custom CSS styles for the Sicepu application */
+
+/* General Styles */
+body {
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #f8f9fa;
+}
+
+.navbar .nav-link {
+    color: #007bff;
+}
+
+.navbar .nav-link:hover {
+    color: #0056b3;
+}
+
+/* Hero Section */
+.header-carousel {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header-carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+}
+
+/* Feature Section */
+.feature {
+    padding: 60px 0;
+}
+
+.feature-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+/* About Section */
+.about-item-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Service Section */
+.service-item {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+}
+
+/* Blog Section */
+.blog-item {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.blog-item:hover {
+    transform: scale(1.05);
+}
+
+/* Team Section */
+.team-item {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    color: #ffc107;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-carousel-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
