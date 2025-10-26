@@ -1,4 +1,6 @@
+@extends('layouts.app') 
 
+@section('content')
 <div class="container">
     <h2>Tambah Warga</h2>
     <form action="{{ route('warga.store') }}" method="POST">
@@ -17,10 +19,9 @@
         <div class="row mb-3">
             <div class="col">
                 <label>Jenis Kelamin</label>
-                <select name="jenis_kelamin" class="form-control" required>
-                    <option value="">Pilih</option>
-                    <option>Laki-laki</option>
-                    <option>Perempuan</option>
+                <select name="jenis_kelamin" class="form-control">
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
                 </select>
             </div>
             <div class="col">
@@ -49,4 +50,4 @@
         <a href="{{ route('warga.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
-
+@endsection

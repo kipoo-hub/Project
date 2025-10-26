@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pengaduan extends Model
+class Pengaduan extends Model
 {
     protected $table = 'pengaduan';
     protected $primaryKey = 'pengaduan_id';
+
     protected $fillable = [
         'nomor_tiket',
         'warga_id',
@@ -17,6 +18,11 @@ class pengaduan extends Model
         'status',
         'lokasi_text',
         'rt',
-        'rw'
+        'rw',
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriPengaduan::class, 'kategori_id');
+    }
 }

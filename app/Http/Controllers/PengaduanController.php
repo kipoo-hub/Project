@@ -2,67 +2,96 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengaduan;
-use App\Models\Warga;
 use App\Models\KategoriPengaduan;
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PengaduanController extends Controller
 {
     public function index()
     {
-        $pengaduan = Pengaduan::with(['warga', 'kategori'])->get();
-        return view('pengaduan.index', compact('pengaduan'));
+        $pengaduans = Pengaduan::with(['kategori', 'warga'])
+            ->latest()
+            ->paginate(10);
+
+        return view('pengaduan.index', compact('pengaduans'));
     }
 
     public function create()
     {
-        $warga = Warga::all();
-        $kategori = KategoriPengaduan::all();
-        return view('pengaduan.create', compact('warga', 'kategori'));
+        $kategoris = KategoriPengaduan::all();
+        return view('pengaduan.create', compact('kategoris'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nomor_tiket' => 'required|unique:pengaduan',
-            'warga_id' => 'required',
-            'kategori_id' => 'required',
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'status' => 'required',
+        $validated = $request->validate([
+            'kategori_id' => 'required|exists:kategoris_pengaduans',
+            'judul' => 'required|max:255',
+            'isi' => 'required',
+            'lampiran' => 'nullable|file|max:2048|mimes:jpg,png,pdf',
+            'is_anonim' => 'boolean'
         ]);
 
-        Pengaduan::create($request->all());
+        if ($request->hasFile('lampiran')) {
+            $validated['lampiran'] = $request->file('lampiran')->store('pengaduan');
+        }
 
-        return redirect()->route('pengaduan.index')->with('success', 'Data pengaduan berhasil ditambahkan.');
+        $pengaduan = Pengaduan::create($validated);
+
+        return redirect()
+            ->route('pengaduan.show', $pengaduan)
+            ->with('success', 'Pengaduan berhasil dikirim.');
+    }
+
+    public function show(Pengaduan $pengaduan)
+    {
+        $pengaduan->load(['kategori', 'warga', 'tindakLanjuts.petugas']);
+        return view('pengaduan.show', compact('pengaduan'));
     }
 
     public function edit(Pengaduan $pengaduan)
     {
-        $warga = Warga::all();
-        $kategori = KategoriPengaduan::all();
-        return view('pengaduan.edit', compact('pengaduan', 'warga', 'kategori'));
+        $kategoris = kategori_pengaduan::all();
+        return view('pengaduan.edit', compact('pengaduan', 'kategoris'));
     }
 
     public function update(Request $request, Pengaduan $pengaduan)
     {
-        $request->validate([
-            'nomor_tiket' => 'required|unique:pengaduan,nomor_tiket,' . $pengaduan->pengaduan_id . ',pengaduan_id',
-            'warga_id' => 'required',
-            'kategori_id' => 'required',
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'status' => 'required',
+        $validated = $request->validate([
+            'kategori_id' => 'required|exists:kategori_pengaduans,id',
+            'judul' => 'required|max:255',
+            'isi' => 'required',
+            'lampiran' => 'nullable|file|max:2048|mimes:jpg,png,pdf',
+            'is_anonim' => 'boolean'
         ]);
 
-        $pengaduan->update($request->all());
-        return redirect()->route('pengaduan.index')->with('success', 'Data pengaduan berhasil diperbarui.');
+        if ($request->hasFile('lampiran')) {
+            // Delete old file if exists
+            if ($pengaduan->lampiran) {
+                Storage::delete($pengaduan->lampiran);
+            }
+            $validated['lampiran'] = $request->file('lampiran')->store('pengaduan');
+        }
+
+        $pengaduan->update($validated);
+
+        return redirect()
+            ->route('pengaduan.show', $pengaduan)
+            ->with('success', 'Pengaduan berhasil diperbarui.');
     }
 
     public function destroy(Pengaduan $pengaduan)
     {
+        if ($pengaduan->lampiran) {
+            Storage::delete($pengaduan->lampiran);
+        }
+
         $pengaduan->delete();
-        return redirect()->route('pengaduan.index')->with('success', 'Data pengaduan berhasil dihapus.');
+
+        return redirect()
+            ->route('pengaduan.index')
+            ->with('success', 'Pengaduan berhasil dihapus.');
     }
 }

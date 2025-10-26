@@ -23,7 +23,7 @@ class WargaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'no_ktp' => 'required|unique:wargas,no_ktp',
+            'no_ktp' => 'required|unique:warga,no_ktp',
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|string',
             'agama' => 'required|string',

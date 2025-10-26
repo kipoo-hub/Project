@@ -1,27 +1,29 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\QuoteController;
-use App\Http\Controllers\WargaController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\TindakLanjutController;
 use App\Http\Controllers\KategoriPengaduanController;
+use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PenilaianLayananController;
+use App\Http\Controllers\TindakLanjutController;
+use App\Http\Controllers\WargaController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::get('/quote', [QuoteController::class, 'index'])->name('quote');
-
 
 Route::resource('warga', WargaController::class);
 Route::resource('kategori', KategoriPengaduanController::class);
 Route::resource('pengaduan', PengaduanController::class);
 Route::resource('tindak', TindakLanjutController::class);
 Route::resource('penilaian', PenilaianLayananController::class);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home')->middleware('auth');
