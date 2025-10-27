@@ -12,7 +12,12 @@ class KategoriPengaduan extends Model
     protected $fillable = [
         'nama_kategori',
         'prioritas', // kalau kamu pakai field ini di orderBy
-        'is_aktif'
+        'is_aktif',
+        'Pelayanan',
+        'Teknis',
+        'Administrasi',
+        'Keamanan',
+        'Kebersihan'
     ];
 
     // Relasi ke tabel pengaduan

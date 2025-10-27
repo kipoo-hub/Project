@@ -29,10 +29,20 @@ class KategoriPengaduanController extends Controller
         'rendah' => 'Rendah (8-14 hari)',
     ];
 
+    $nama_kategori = [
+        'Pelayanan',
+        'Teknis',
+        'Administrasi',
+        'Keamanan',
+        'Kebersihan'
+    ];
+
     $kategoris = KategoriPengaduan::all();
 
-    return view('kategori.create', compact('prioritas_list', 'kategoris'));
+
+    return view('kategori.create', compact('prioritas_list', 'nama_kategori', 'kategoris'));
 }
+
 
 
     /**

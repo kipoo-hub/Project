@@ -23,8 +23,7 @@
                                     @foreach ($kategoris as $kategori)
                                         <option value="{{ $kategori->id }}"
                                             {{ old('kategori_id') == $kategori->id ? 'selected' : '' }}>
-                                            {{ $kategori->nama }}
-                                        </option>
+                                            {{ $kategori->nama }} </option>
                                     @endforeach
                                 </select>
 

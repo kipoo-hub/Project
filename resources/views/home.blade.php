@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sicepu - Pengaduan & Aspirasi Rakya</title>
+    <title>Bina Desa - Pengaduan & Aspirasi Rakya</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="ps-3">
                             <a href="mailto:example@gmail.com" class="text-muted small"><i
-                                    class="fas fa-envelope text-primary me-2"></i>sicepu@gmail.com</a>
+                                    class="fas fa-envelope text-primary me-2"></i>Bina Desa@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="#" class="navbar-brand p-0">
-                    <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> Sicepu</h1>
+                    <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> Bina Desa</h1>
 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -156,10 +156,10 @@
                     <div class="row g-4 align-items-center">
                         <div class="col-lg-7 animated fadeInLeft">
                             <div class="text-sm-center text-md-start">
-                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Sicepu</h4>
+                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Bina Desa</h4>
                                 <h1 class="display-1 text-white mb-4">Kami butuh pengaduan dan aspirasi dari kalian!
                                 </h1>
-                                <p class="mb-5 fs-5">Apapun masalah kalian, sampaikan saja di Sicepu. Kami siap
+                                <p class="mb-5 fs-5">Apapun masalah kalian, sampaikan saja di Bina Desa. Kami siap
                                     membantu menyelesaikan masalah kalian dengan cepat dan tepat.
                                 </p>
 
@@ -185,10 +185,10 @@
                         </div>
                         <div class="col-lg-7 animated fadeInRight">
                             <div class="text-sm-center text-md-end">
-                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Sicepu</h4>
+                                <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Bina Desa</h4>
                                 <h1 class="display-1 text-white mb-4">Kami butuh pengaduan dan aspirasi dari kalian!
                                 </h1>
-                                <p class="mb-5 fs-5">Apapun masalah kalian, sampaikan saja di Sicepu. Kami siap
+                                <p class="mb-5 fs-5">Apapun masalah kalian, sampaikan saja di Bina Desa. Kami siap
                                     membantu menyelesaikan masalah kalian dengan cepat dan tepat.
                                 </p>
 
@@ -480,98 +480,6 @@
 
 
 
-                <!-- Team Start -->
-                <div class="container-fluid team pb-5">
-                    <div class="container pb-5">
-                        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
-                            style="max-width: 800px;">
-                            <h4 class="text-primary">Tim Kami</h4>
-                            <h1 class="display-4 mb-4">Kenali Anggota Tim Sicepu</h1>
-                            <p class="mb-0">Tim kami siap menerima dan menindaklanjuti pengaduan serta aspirasi Anda
-                                dengan
-                                profesionalisme dan empati.</p>
-                        </div>
-
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="team-item">
-                                    <div class="team-img">
-                                        <img src="{{ asset('assets/img/team/kipo.jpg') }}"
-                                            class="img-fluid rounded-top w-100" alt="Kipo">
-                                        <div class="team-icon">
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2"
-                                                href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2"
-                                                href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="team-title p-4">
-                                        <h4 class="mb-0">Kipo</h4>
-                                        <p class="mb-0">Koordinator Tim</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                                <div class="team-item">
-                                    <div class="team-img">
-                                        <img src="{{ asset('assets/img/team/johan.jpg') }}"
-                                            class="img-fluid rounded-top w-100" alt="Johan">
-                                        <div class="team-icon">
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2"
-                                                href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0"
-                                                href="#"><i class="fab fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="team-title p-4">
-                                        <h4 class="mb-0">Johan</h4>
-                                        <p class="mb-0">Penyelaras Operasional</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                                <div class="team-item">
-                                    <div class="team-img">
-                                        <img src="{{ asset('assets/img/team/there.jpg') }}"
-                                            class="img-fluid rounded-top w-100" alt="There">
-                                        <div class="team-icon">
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2"
-                                                href="#"><i class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0"
-                                                href="#"><i class="fab fa-facebook-f"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="team-title p-4">
-                                        <h4 class="mb-0">There</h4>
-                                        <p class="mb-0">Analis & Verifikator</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                                <div class="team-item">
-                                    <div class="team-img">
-                                        <img src="{{ asset('assets/img/team/vera.jpg') }}"
-                                            class="img-fluid rounded-top w-100" alt="Vera">
-                                        <div class="team-icon">
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-2"
-                                                href="#"><i class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-primary btn-sm-square rounded-pill mb-0"
-                                                href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="team-title p-4">
-                                        <h4 class="mb-0">Vera</h4>
-                                        <p class="mb-0">Pengelola Kasus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team End -->
 
                 <!-- Footer Start -->
                 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
@@ -583,10 +491,10 @@
                                         <div class="col-md-6 col-lg-6 col-xl-5">
                                             <div class="footer-item">
                                                 <a href="{{ url('/') }}" class="p-0">
-                                                    <h3 class="text-white"><i class="fab fa-slack me-3"></i> Sicepu
+                                                    <h3 class="text-white"><i class="fab fa-slack me-3"></i> Bina Desa
                                                     </h3>
                                                 </a>
-                                                <p class="text-white mb-4">Sicepu adalah saluran resmi untuk menerima
+                                                <p class="text-white mb-4">Bina Desa adalah saluran resmi untuk menerima
                                                     pengaduan dan
                                                     aspirasi masyarakat. Kirim laporan, pantau status, dan dapatkan
                                                     informasi tindak
@@ -696,7 +604,7 @@
                                                         </div>
                                                         <div>
                                                             <h4 class="text-white">Email</h4>
-                                                            <p class="mb-0">sicepu@gmail.com</p>
+                                                            <p class="mb-0">Bina Desa@gmail.com</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -767,7 +675,7 @@
                         <div class="row g-4 align-items-center">
                             <div class="col-md-6 text-center text-md-end mb-md-0">
                                 <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                            class="fas fa-copyright text-light me-2"></i>Sicepu</a>, All right
+                                            class="fas fa-copyright text-light me-2"></i>Bina Desa</a>, All right
                                     reserved.</span>
                             </div>
                             <div class="col-md-6 text-center text-md-start text-body">
