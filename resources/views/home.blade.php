@@ -481,6 +481,7 @@
 
 
 
+
                 <!-- Footer Start -->
                 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
                     <div class="container py-5">
@@ -494,7 +495,8 @@
                                                     <h3 class="text-white"><i class="fab fa-slack me-3"></i> Bina Desa
                                                     </h3>
                                                 </a>
-                                                <p class="text-white mb-4">Bina Desa adalah saluran resmi untuk menerima
+                                                <p class="text-white mb-4">Bina Desa adalah saluran resmi untuk
+                                                    menerima
                                                     pengaduan dan
                                                     aspirasi masyarakat. Kirim laporan, pantau status, dan dapatkan
                                                     informasi tindak
@@ -515,19 +517,27 @@
                                         <div class="col-md-6 col-lg-6 col-xl-3">
                                             <div class="footer-item">
                                                 <h4 class="text-white mb-4">Tautan Cepat</h4>
-                                                <a href="{{ url('/lapor') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Laporkan</a>
-                                                <a href="{{ url('/aspirasi') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Aspirasi</a>
-                                                <a href="{{ url('/status-laporan') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Cek
-                                                    Status</a>
-                                                <a href="{{ url('/panduan-lapor') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Panduan</a>
-                                                <a href="{{ url('/berita') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Berita</a>
-                                                <a href="{{ url('/kontak') }}"><i
-                                                        class="fas fa-angle-right me-2"></i>Kontak</a>
+
+                                                <a href="{{ route('home') }}">
+                                                    <i class="fas fa-angle-right me-2"></i>Beranda
+                                                </a>
+
+                                                <a href="{{ route('pengaduan.index') }}">
+                                                    <i class="fas fa-angle-right me-2"></i>Pengaduan
+                                                </a>
+
+                                                <a href="{{ route('kategori.index') }}">
+                                                    <i class="fas fa-angle-right me-2"></i>Kategori Pengaduan
+                                                </a>
+
+                                                <a href="{{ route('tindak.index') }}">
+                                                    <i class="fas fa-angle-right me-2"></i>Tindak Lanjut
+                                                </a>
+
+                                                <a href="{{ route('penilaian.index') }}">
+                                                    <i class="fas fa-angle-right me-2"></i>Penilaian Layanan
+                                                </a>
+                                                
                                             </div>
                                         </div>
 
@@ -667,6 +677,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Footer End -->
 
                 <!-- Copyright Start -->

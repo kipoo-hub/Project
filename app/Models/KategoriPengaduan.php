@@ -10,7 +10,7 @@ class KategoriPengaduan extends Model
     protected $primaryKey = 'kategori_id';
 
     protected $fillable = [
-        'nama_kategori',
+        'nama',
         'prioritas', // kalau kamu pakai field ini di orderBy
         'is_aktif',
         'Pelayanan',

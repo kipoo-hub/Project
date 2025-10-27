@@ -15,13 +15,13 @@ class PengaduanController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('pengaduan.index', compact('pengaduans'));
+        return view('pages.pengaduan.index', compact('pengaduans'));
     }
 
     public function create()
     {
         $kategoris = KategoriPengaduan::all();
-        return view('pengaduan.create', compact('kategoris'));
+        return view('pages.pengaduan.create', compact('kategoris'));
     }
 
     public function store(Request $request)
@@ -41,20 +41,20 @@ class PengaduanController extends Controller
         $pengaduan = Pengaduan::create($validated);
 
         return redirect()
-            ->route('pengaduan.show', $pengaduan)
+            ->route('pages.pengaduan.show', $pengaduan)
             ->with('success', 'Pengaduan berhasil dikirim.');
     }
 
     public function show(Pengaduan $pengaduan)
     {
-        $pengaduan->load(['kategori', 'warga', 'tindakLanjuts.petugas']);
-        return view('pengaduan.show', compact('pengaduan'));
+        $pengaduan->load(['kategori', 'warga', 'pages.tindakLanjuts.petugas']);
+        return view('pages.pengaduan.show', compact('pengaduan'));
     }
 
     public function edit(Pengaduan $pengaduan)
     {
         $kategoris = kategori_pengaduan::all();
-        return view('pengaduan.edit', compact('pengaduan', 'kategoris'));
+        return view('pages.pengaduan.edit', compact('pengaduan', 'kategoris'));
     }
 
     public function update(Request $request, Pengaduan $pengaduan)
@@ -78,7 +78,7 @@ class PengaduanController extends Controller
         $pengaduan->update($validated);
 
         return redirect()
-            ->route('pengaduan.show', $pengaduan)
+            ->route('pages.pengaduan.show', $pengaduan)
             ->with('success', 'Pengaduan berhasil diperbarui.');
     }
 
@@ -91,7 +91,7 @@ class PengaduanController extends Controller
         $pengaduan->delete();
 
         return redirect()
-            ->route('pengaduan.index')
+            ->route('pages.pengaduan.index')
             ->with('success', 'Pengaduan berhasil dihapus.');
     }
 }

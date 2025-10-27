@@ -15,35 +15,32 @@ class KategoriPengaduanController extends Controller
             ->orderBy('prioritas', 'asc')
             ->get();
 
-        return view('kategori.index', compact('kategoris'));
+        return view('pages.kategori.index', compact('kategoris'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-   public function create()
-{
-    $prioritas_list = [
-        'tinggi' => 'Tinggi (1-3 hari)',
-        'sedang' => 'Sedang (4-7 hari)',
-        'rendah' => 'Rendah (8-14 hari)',
-    ];
+    public function create()
+    {
+        $prioritas_list = [
+            'tinggi' => 'Tinggi (1-3 hari)',
+            'sedang' => 'Sedang (4-7 hari)',
+            'rendah' => 'Rendah (8-14 hari)',
+        ];
 
-    $nama_kategori = [
-        'Pelayanan',
-        'Teknis',
-        'Administrasi',
-        'Keamanan',
-        'Kebersihan'
-    ];
+        $nama_kategori = [
+            'Pelayanan',
+            'Teknis',
+            'Administrasi',
+            'Keamanan',
+            'Kebersihan',
+        ];
 
-    $kategoris = KategoriPengaduan::all();
+        $kategoris = KategoriPengaduan::all();
 
-
-    return view('kategori.create', compact('prioritas_list', 'nama_kategori', 'kategoris'));
-}
-
-
+        return view('pages.kategori.create', compact('prioritas_list', 'nama_kategori', 'kategoris'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -57,11 +54,12 @@ class KategoriPengaduanController extends Controller
         ]);
 
         $data = $request->validate([
-            'nama_kategori' => 'required|string|max:255|unique:kategori_pengaduan',
-            'sla_hari'      => 'required|integer|min:1|max:30',
-            'prioritas'     => 'required|in:tinggi,sedang,rendah',
-            'is_aktif'      => 'boolean',
+            'nama'      => 'required|string|max:255|unique:kategori_pengaduan,nama',
+            'sla_hari'  => 'required|integer|min:1|max:30',
+            'prioritas' => 'required|in:tinggi,sedang,rendah',
+            'is_aktif'  => 'boolean',
         ]);
+
         $data['is_aktif'] = $request->has('is_aktif');
 
         KategoriPengaduan::create($data);
@@ -80,7 +78,7 @@ class KategoriPengaduanController extends Controller
             $query->latest()->take(5);
         }]);
 
-        return view('kategori.show', compact('kategori'));
+        return view('pages.kategori.show', compact('kategori'));
     }
 
     /**
@@ -93,7 +91,7 @@ class KategoriPengaduanController extends Controller
             'sedang' => 'Sedang (4-7 hari)',
             'rendah' => 'Rendah (8-14 hari)',
         ];
-        return view('kategori.edit', compact('kategori', 'prioritas_list'));
+        return view('pages.kategori.edit', compact('kategori', 'prioritas_list'));
     }
 
     /**
@@ -102,10 +100,10 @@ class KategoriPengaduanController extends Controller
     public function update(Request $request, KategoriPengaduan $kategori)
     {
         $data = $request->validate([
-            'nama_kategori_kategori_kategori_kategori' => 'required|string|max:255|unique:kategori_pengaduans,nama_kategori_kategori_kategori_kategori,' . $kategori->id,
-            'sla_hari'                                 => 'required|integer|min:1|max:30',
-            'prioritas'                                => 'required|in:tinggi,sedang,rendah',
-            'is_aktif'                                 => 'boolean',
+            'nama'      => 'required|string|max:255|unique:kategori_pengaduans,nama_kategori_kategori_kategori_kategori,' . $kategori->id,
+            'sla_hari'  => 'required|integer|min:1|max:30',
+            'prioritas' => 'required|in:tinggi,sedang,rendah',
+            'is_aktif'  => 'boolean',
         ]);
 
         $data['is_aktif'] = $request->has('is_aktif');
@@ -113,7 +111,7 @@ class KategoriPengaduanController extends Controller
         $kategori->update($data);
 
         return redirect()
-            ->route('kategori.index')
+            ->route('pages.kategori.index')
             ->with('success', 'Kategori pengaduan berhasil diperbarui.');
     }
 
@@ -125,13 +123,13 @@ class KategoriPengaduanController extends Controller
         // Check if category has complaints
         if ($kategori->pengaduans()->count() > 0) {
             return redirect()
-                ->route('kategori.index')
+                ->route('pages.kategori.index')
                 ->with('error', 'Kategori tidak dapat dihapus karena masih memiliki pengaduan terkait.');
         }
 
         $kategori->delete();
         return redirect()
-            ->route('kategori.index')
+            ->route('pages.kategori.index')
             ->with('success', 'Kategori pengaduan berhasil dihapus.');
     }
 }

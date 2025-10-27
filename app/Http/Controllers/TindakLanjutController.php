@@ -11,7 +11,7 @@ class TindakLanjutController extends Controller
     public function index()
     {
         $tindak = TindakLanjut::with('pengaduan')->get();
-        return view('tindak.index', compact('tindak'));
+        return view('pages.tindak.index', compact('tindak'));
     }
 
     public function create()

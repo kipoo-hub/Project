@@ -11,7 +11,7 @@ class PenilaianLayananController extends Controller
     public function index()
     {
         $penilaian = PenilaianLayanan::with('pengaduan')->get();
-        return view('penilaian.index', compact('penilaian'));
+        return view('pages.penilaian.index', compact('penilaian'));
     }
 
     public function create()

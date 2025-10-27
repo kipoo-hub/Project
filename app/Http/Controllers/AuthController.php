@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -12,20 +11,20 @@ class AuthController extends Controller
     // ✅ Tampilkan form login
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('pages.auth.login');
     }
 
     // ✅ Proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'email'    => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('/')->with('success', 'Berhasil login!');
+            return redirect()->route('home')->with('success', 'Berhasil login!');
         }
 
         return back()->withErrors([
@@ -52,14 +51,14 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name'     => $request->name,
+            'email'    => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
