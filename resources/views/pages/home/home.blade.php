@@ -102,15 +102,17 @@
                         <a href="{{ route('home') }}" class="nav-item nav-link active">Beranda</a>
                         <a href="{{ route('pengaduan.index') }}" class="nav-item nav-link">Pengaduan</a>
                         <a href="{{ route('kategori.index') }}" class="nav-item nav-link">Kategori</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                                <span class="dropdown-toggle">Status</span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="{{ route('tindak.index') }}" class="dropdown-item">Tindak Lanjut</a>
-                                <a href="{{ route('penilaian.index') }}" class="dropdown-item">Penilaian</a>
+                        <a href="{{ route('about') }}" class="nav-link">
+                            <i class="fas fa-info-circle"></i> Tentang
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                                    <span class="dropdown-toggle">Status</span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('tindak.index') }}" class="dropdown-item">Tindak Lanjut</a>
+                                    <a href="{{ route('penilaian.index') }}" class="dropdown-item">Penilaian</a>
+                                </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="nav-btn px-3">
@@ -672,6 +674,14 @@
 
             <!-- Footer End -->
 
+            <!-- Floating WhatsApp Button -->
+            <div id="whatsapp-float" class="whatsapp-float">
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda."
+                    target="_blank" class="whatsapp-btn" title="Hubungi via WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
             <!-- Copyright Start -->
             <div class="container-fluid copyright py-4">
                 <div class="container">
@@ -711,6 +721,18 @@
 
             <!-- Template Javascript -->
             <script src="{{ asset('assets/js/main.js') }}"></script>
+            <script>
+                // Opsional: Tambahkan animasi atau fungsi tambahan jika diperlukan
+                // Misalnya, untuk menutup tombol jika tidak diperlukan
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Kode ini bisa diperluas, misalnya untuk animasi fade-in
+                    const whatsappBtn = document.querySelector('.whatsapp-btn');
+                    whatsappBtn.addEventListener('click', function() {
+                        // Opsional: Track klik untuk analytics
+                        console.log('WhatsApp button clicked');
+                    });
+                });
+            </script>
 </body>
 
 </html>

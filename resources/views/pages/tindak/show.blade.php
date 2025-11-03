@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest.app')
 
 @section('title', 'Detail Tindak Lanjut')
 
@@ -48,10 +48,10 @@
                         <dl class="row">
                             <dt class="col-sm-4">Petugas</dt>
                             <dd class="col-sm-8">{{ $tindak->petugas->name }}</dd>
-                            
+
                             <dt class="col-sm-4">Tanggal Dibuat</dt>
                             <dd class="col-sm-8">{{ $tindak->created_at->format('d/m/Y H:i') }}</dd>
-                            
+
                             <dt class="col-sm-4">Terakhir Diupdate</dt>
                             <dd class="col-sm-8">{{ $tindak->updated_at->format('d/m/Y H:i') }}</dd>
                         </dl>
@@ -71,3 +71,5 @@
     </div>
 </div>
 @endsection
+
+

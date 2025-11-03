@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.gusast.app')
 
 @section('title', 'Edit Penilaian Layanan')
 

@@ -6,14 +6,18 @@
                     <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> Bina Desa</h1>
 
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-0 mx-lg-auto">
                         <a href="{{ route('home') }}" class="nav-item nav-link active">Beranda</a>
+
+                        <a href="{{ route('about') }}" class="nav-link">
+                            <i class="fas fa-info-circle"></i> Tentang
+                        </a>
+
                         <a href="{{ route('pengaduan.index') }}" class="nav-item nav-link">Pengaduan</a>
                         <a href="{{ route('kategori.index') }}" class="nav-item nav-link">Kategori</a>
                         <div class="nav-item dropdown">

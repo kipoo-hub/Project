@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
     <!-- Styles -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,14 +25,16 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000; /* Pastikan di atas elemen lain */
+            z-index: 1000;
+            /* Pastikan di atas elemen lain */
         }
 
         .whatsapp-btn {
             display: inline-block;
             width: 60px;
             height: 60px;
-            background-color: #25d366; /* Warna hijau WhatsApp */
+            background-color: #25d366;
+            /* Warna hijau WhatsApp */
             color: white;
             border-radius: 50%;
             text-align: center;
@@ -43,18 +46,22 @@
         }
 
         .whatsapp-btn:hover {
-            background-color: #128c7e; /* Warna lebih gelap saat hover */
-            transform: scale(1.1); /* Efek zoom saat hover */
+            background-color: #128c7e;
+            /* Warna lebih gelap saat hover */
+            transform: scale(1.1);
+            /* Efek zoom saat hover */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
         .whatsapp-btn i {
-            margin-top: 5px; /* Penyesuaian posisi ikon */
+            margin-top: 5px;
+            /* Penyesuaian posisi ikon */
         }
     </style>
 
     @stack('css')
 </head>
+
 <body>
     @include('layouts.guest.navbar')
 
@@ -67,14 +74,33 @@
 
     @include('layouts.guest.footer')
 
-
+    <!-- Floating WhatsApp Button -->
+    <div id="whatsapp-float" class="whatsapp-float">
+        <a href="https://wa.me/6282292707434?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda."
+            target="_blank" class="whatsapp-btn" title="Hubungi via WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Custom Script for Floating WhatsApp Button -->
-    
+
+    <script>
+        // Opsional: Tambahkan animasi atau fungsi tambahan jika diperlukan
+        // Misalnya, untuk menutup tombol jika tidak diperlukan
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kode ini bisa diperluas, misalnya untuk animasi fade-in
+            const whatsappBtn = document.querySelector('.whatsapp-btn');
+            whatsappBtn.addEventListener('click', function() {
+                // Opsional: Track klik untuk analytics
+                console.log('WhatsApp button clicked');
+            });
+        });
+    </script>
 
     @stack('js')
 </body>
+
 </html>

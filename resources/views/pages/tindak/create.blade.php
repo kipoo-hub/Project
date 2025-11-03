@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest.app')
 
 @section('title', 'Tambah Tindak Lanjut')
 
@@ -20,7 +20,7 @@
                     <form action="{{ route('tindak.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="pengaduan_id" value="{{ $pengaduan->id }}">
-                        
+
                         <div class="mb-3">
                             <label class="form-label">Status Tindak Lanjut</label>
                             <select name="status" class="form-select @error('status') is-invalid @enderror">

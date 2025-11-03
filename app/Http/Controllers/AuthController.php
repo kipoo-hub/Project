@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // ✅ Tampilkan form login
+    //  Tampilkan form login
     public function showLoginForm()
     {
         return view('pages.auth.login');
     }
 
-    // ✅ Proses login
+    //  Proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -32,7 +32,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // ✅ Logout
+    // Logout
     public function logout(Request $request)
     {
         Auth::logout();
@@ -41,13 +41,13 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'Anda telah logout.');
     }
 
-    // ✅ Tampilkan form register
+    // Tampilkan form register
     public function showRegisterForm()
     {
         return view('pages.auth.register');
     }
 
-    // ✅ Proses register
+    //  Proses register
     public function register(Request $request)
     {
         $request->validate([

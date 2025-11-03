@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest.app')
 
 @section('title', 'Kategori Pengaduan')
 
@@ -25,7 +25,7 @@
         </div>
 
         {{-- Tampilkan notifikasi --}}
-        @include('layouts.partial.alert')
+        @include('layouts.guest.alert')
 
         {{-- Tabel Daftar Kategori --}}
         <div class="card">

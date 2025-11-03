@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.guest.app')
 
 @section('title', 'Edit Kategori')
 
