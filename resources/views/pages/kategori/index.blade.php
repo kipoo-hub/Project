@@ -25,7 +25,7 @@
         </div>
 
         {{-- Tampilkan notifikasi --}}
-        @include('partial.alert')
+        @include('layouts.partial.alert')
 
         {{-- Tabel Daftar Kategori --}}
         <div class="card">

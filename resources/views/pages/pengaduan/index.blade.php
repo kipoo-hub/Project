@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest.app')
 
 @section('title', 'Daftar Pengaduan')
 
@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    @include('partial.alert')
+    @include('layouts.guest.alert')
 
     <div class="card">
         <div class="card-body">

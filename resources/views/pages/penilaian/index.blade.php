@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    @include('partial.alert')
+    @include('layouts.partial.alert')
 
     <div class="card shadow-sm">
         <div class="card-body">

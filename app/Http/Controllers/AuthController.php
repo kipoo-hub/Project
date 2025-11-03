@@ -44,7 +44,7 @@ class AuthController extends Controller
     // ✅ Tampilkan form register
     public function showRegisterForm()
     {
-        return view('auth.register');
+        return view('pages.auth.register');
     }
 
     // ✅ Proses register

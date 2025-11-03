@@ -25,5 +25,5 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/home', function () {
-    return view('home');
+    return view('pages.home');
 })->name('home')->middleware('auth');
