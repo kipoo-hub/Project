@@ -19,52 +19,62 @@
 
                         {{-- Kategori Pengaduan --}}
                         <div class="mb-3">
-                            <label for="kategori_id" class="form-label fw-semibold">Kategori Pengaduan <span class="text-danger">*</span></label>
-                            <select name="kategori_id" id="kategori_id" class="form-select @error('kategori_id') is-invalid @enderror" required>
+                            <label for="kategori_id" class="form-label">Kategori Pengaduan <span
+                                    class="text-danger">*</span></label>
+                            <select name="kategori_id" id="kategori_id"
+                                class="form-select @error('kategori_id') is-invalid @enderror">
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach ($kategoris as $kategori)
-                                    <option value="{{ $kategori->id }}" {{ old('kategori_id') == $kategori->id ? 'selected' : '' }}>
-                                        {{ $kategori->nama ?? $kategori->nama_kategori }}
-                                    </option>
+                                <option value="{{ $kategori->kategori_id }}"
+                                    {{ old('kategori_id') == $kategori->kategori_id ? 'selected' : '' }}>
+                                    {{ $kategori->nama }}
+                                </option>
                                 @endforeach
                             </select>
                             @error('kategori_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         {{-- Judul --}}
                         <div class="mb-3">
-                            <label for="judul" class="form-label fw-semibold">Judul Pengaduan <span class="text-danger">*</span></label>
-                            <input type="text" name="judul" id="judul" class="form-control @error('judul') is-invalid @enderror"
-                                value="{{ old('judul') }}" placeholder="Contoh: Jalan rusak di depan pasar...">
+                            <label for="judul" class="form-label fw-semibold">Judul Pengaduan <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" name="judul" id="judul"
+                                class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}"
+                                placeholder="Contoh: Jalan rusak di depan pasar...">
                             @error('judul')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         {{-- Isi Pengaduan --}}
                         <div class="mb-3">
-                            <label for="isi" class="form-label fw-semibold">Isi Pengaduan <span class="text-danger">*</span></label>
-                            <textarea name="isi" id="isi" rows="5" class="form-control @error('isi') is-invalid @enderror" placeholder="Jelaskan pengaduan Anda dengan detail...">{{ old('isi') }}</textarea>
-                            @error('isi')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <label for="deskripsi" class="form-label fw-semibold">Isi Pengaduan <span
+                                    class="text-danger">*</span></label>
+                            <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control @error('deskripsi') is-invalid @enderror"
+                                placeholder="Jelaskan pengaduan Anda dengan detail...">{{ old('deskripsi') }}</textarea>
+                            @error('deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         {{-- Lampiran --}}
                         <div class="mb-3">
                             <label for="lampiran" class="form-label fw-semibold">Lampiran (Opsional)</label>
-                            <input type="file" name="lampiran" id="lampiran" class="form-control @error('lampiran') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf">
+                            <input type="file" name="lampiran" id="lampiran"
+                                class="form-control @error('lampiran') is-invalid @enderror"
+                                accept=".jpg,.jpeg,.png,.pdf">
                             <small class="text-muted">Format: JPG, PNG, PDF — Maksimal 2MB</small>
                             @error('lampiran')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         {{-- Kirim Sebagai Anonim --}}
                         <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" name="is_anonim" id="is_anonim" {{ old('is_anonim') ? 'checked' : '' }}>
+                            <input class="form-check-input" type="checkbox" name="is_anonim" id="is_anonim"
+                                {{ old('is_anonim') ? 'checked' : '' }}>
                             <label class="form-check-label" for="is_anonim">
                                 Kirim sebagai anonim (tanpa identitas)
                             </label>

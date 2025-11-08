@@ -20,14 +20,14 @@
                             <select name="kategori_id" class="form-select @error('kategori_id') is-invalid @enderror">
                                 <option value="">Pilih Kategori</option>
                                 @foreach($kategoris as $kategori)
-                                    <option value="{{ $kategori->id }}"
-                                        {{ old('kategori_id', $pengaduan->kategori_id) == $kategori->id ? 'selected' : '' }}>
-                                        {{ $kategori->nama }}
-                                    </option>
+                                <option value="{{ $kategori->kategori_id }}"
+                                    {{ old('kategori_id', $pengaduan->kategori_id) == $kategori->kategori_id ? 'selected' : '' }}>
+                                    {{ $kategori->nama }}
+                                </option>
                                 @endforeach
                             </select>
                             @error('kategori_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -37,34 +37,34 @@
                                 class="form-control @error('judul') is-invalid @enderror"
                                 value="{{ old('judul', $pengaduan->judul) }}">
                             @error('judul')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Isi Pengaduan</label>
-                            <textarea name="isi" rows="5"
-                                class="form-control @error('isi') is-invalid @enderror">{{ old('isi', $pengaduan->isi) }}</textarea>
-                            @error('isi')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <textarea name="deskripsi" rows="5"
+                                class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $pengaduan->deskripsi) }}</textarea>
+                            @error('deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Lampiran</label>
                             @if($pengaduan->lampiran)
-                                <div class="mb-2">
-                                    <small class="text-muted">Lampiran saat ini:</small>
-                                    <a href="{{ asset('storage/' . $pengaduan->lampiran) }}" target="_blank">
-                                        Lihat Lampiran
-                                    </a>
-                                </div>
+                            <div class="mb-2">
+                                <small class="text-muted">Lampiran saat ini:</small>
+                                <a href="{{ asset('storage/' . $pengaduan->lampiran) }}" target="_blank">
+                                    Lihat Lampiran
+                                </a>
+                            </div>
                             @endif
                             <input type="file" name="lampiran"
                                 class="form-control @error('lampiran') is-invalid @enderror">
                             <small class="text-muted">Format: jpg, png, pdf (max 2MB). Kosongkan jika tidak ingin mengubah.</small>
                             @error('lampiran')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
