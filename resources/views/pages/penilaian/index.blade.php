@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    @include('layouts.partial.alert')
+    @include('layouts.guest.alert')
 
     <div class="card shadow-sm">
         <div class="card-body">

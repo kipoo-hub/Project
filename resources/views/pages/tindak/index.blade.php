@@ -8,7 +8,7 @@
         <h2>Daftar Tindak Lanjut</h2>
     </div>
 
-    @include('layouts.partial.alert')
+    @include('layouts.guest.alert')
 
     <div class="card">
         <div class="card-body">

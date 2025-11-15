@@ -17,7 +17,7 @@ class TindakLanjutController extends Controller
     public function create()
     {
         $pengaduan = Pengaduan::all();
-        return view('tindak.create', compact('pengaduan'));
+        return view('pages.tindak.create', compact('pengaduan'));
     }
 
     public function store(Request $request)
@@ -30,13 +30,13 @@ class TindakLanjutController extends Controller
         ]);
 
         TindakLanjut::create($request->all());
-        return redirect()->route('tindak.index')->with('success', 'Tindak lanjut berhasil ditambahkan.');
+        return redirect()->route('pages.tindak.index')->with('success', 'Tindak lanjut berhasil ditambahkan.');
     }
 
     public function edit(TindakLanjut $tindak)
     {
         $pengaduan = Pengaduan::all();
-        return view('tindak.edit', compact('tindak', 'pengaduan'));
+        return view('pages.tindak.edit', compact('tindak', 'pengaduan'));
     }
 
     public function update(Request $request, TindakLanjut $tindak)
@@ -49,12 +49,12 @@ class TindakLanjutController extends Controller
         ]);
 
         $tindak->update($request->all());
-        return redirect()->route('tindak.index')->with('success', 'Data tindak lanjut berhasil diperbarui.');
+        return redirect()->route('pages.tindak.index')->with('success', 'Data tindak lanjut berhasil diperbarui.');
     }
 
     public function destroy(TindakLanjut $tindak)
     {
         $tindak->delete();
-        return redirect()->route('tindak.index')->with('success', 'Data tindak lanjut berhasil dihapus.');
+        return redirect()->route('pages.tindak.index')->with('success', 'Data tindak lanjut berhasil dihapus.');
     }
 }

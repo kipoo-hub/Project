@@ -17,7 +17,7 @@ class PenilaianLayananController extends Controller
     public function create()
     {
         $pengaduan = Pengaduan::all();
-        return view('penilaian.create', compact('pengaduan'));
+        return view('pages.penilaian.create', compact('pengaduan'));
     }
 
     public function store(Request $request)
