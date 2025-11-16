@@ -35,7 +35,7 @@ class PenilaianLayananController extends Controller
     public function edit(PenilaianLayanan $penilaian)
     {
         $pengaduan = Pengaduan::all();
-        return view('penilaian.edit', compact('penilaian', 'pengaduan'));
+        return view('pages.penilaian.edit', compact('penilaian', 'pengaduan'));
     }
 
     public function update(Request $request, PenilaianLayanan $penilaian)
