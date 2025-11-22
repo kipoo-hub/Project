@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\PenilaianLayanan;
 use App\Models\Pengaduan;
+use App\Models\PenilaianLayanan;
 use Illuminate\Http\Request;
 
 class PenilaianLayananController extends Controller
@@ -24,8 +23,8 @@ class PenilaianLayananController extends Controller
     {
         $request->validate([
             'pengaduan_id' => 'required',
-            'rating' => 'required|integer|min:1|max:5',
-            'komentar' => 'nullable|string'
+            'rating'       => 'required|integer|min:1|max:5',
+            'komentar'     => 'nullable|string',
         ]);
 
         PenilaianLayanan::create($request->all());
@@ -42,8 +41,8 @@ class PenilaianLayananController extends Controller
     {
         $request->validate([
             'pengaduan_id' => 'required',
-            'rating' => 'required|integer|min:1|max:5',
-            'komentar' => 'nullable|string'
+            'rating'       => 'required|integer|min:1|max:5',
+            'komentar'     => 'nullable|string',
         ]);
 
         $penilaian->update($request->all());
@@ -55,6 +54,12 @@ class PenilaianLayananController extends Controller
         $penilaian->delete();
         return redirect()->route('penilaian.index')->with('success', 'Penilaian berhasil dihapus.');
     }
+
+    public function show(PenilaianLayanan $penilaian)
+    {
+        // Load relasi pengaduan agar tidak null
+        $penilaian->load('pengaduan');
+
+        return view('pages.penilaian.show', compact('penilaian'));
+    }
 }
-
-

@@ -13,65 +13,66 @@
 
     @include('layouts.guest.alert')
 
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>No</th>
-                            <th>Pengaduan</th>
-                            <th>Rating</th>
-                            <th>Komentar</th>
-                            <th>Tanggal</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($penilaian as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                @if($item->pengaduan)
-                                    <a href="{{ route('pengaduan.show', $item->pengaduan) }}" class="text-decoration-none">
-                                        {{ Str::limit($item->pengaduan->judul, 50) }}
-                                    </a>
-                                @else
-                                    <span class="text-muted">Tidak ada pengaduan</span>
-                                @endif
-                            </td>
-                            <td>
-                                @for($i = 1; $i <= 5; $i++)
-                                    <i class="fas fa-star {{ $i <= $item->rating ? 'text-warning' : 'text-muted' }}"></i>
-                                @endfor
-                            </td>
-                            <td>{{ Str::limit($item->komentar, 50) }}</td>
-                            <td>{{ $item->created_at->format('d/m/Y') }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('penilaian.show', $item) }}" class="btn btn-sm btn-info" title="Lihat Detail">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('penilaian.edit', $item) }}" class="btn btn-sm btn-warning" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form action="{{ route('penilaian.destroy', $item) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus penilaian ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" title="Hapus">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="6" class="text-center text-muted py-3">Belum ada penilaian layanan</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+    <div class="row">
+        @forelse($penilaian as $item)
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-sm h-100 rounded-4 border-0">
+                <div class="card-body">
+
+                    {{-- Judul Pengaduan --}}
+                    <h5 class="card-title mb-2">
+                        @if($item->pengaduan)
+                        <a href="{{ route('pengaduan.show', $item->pengaduan) }}" class="text-decoration-none text-dark">
+                            {{ Str::limit($item->pengaduan->judul, 40) }}
+                        </a>
+                        @else
+                            <span class="text-muted">Tidak ada pengaduan</span>
+                        @endif
+                    </h5>
+
+                    {{-- Rating Bintang --}}
+                    <div class="mb-2">
+                        @for($i = 1; $i <= 5; $i++)
+                            <i class="fas fa-star {{ $i <= $item->rating ? 'text-warning' : 'text-muted' }}"></i>
+                        @endfor
+                    </div>
+
+                    {{-- Komentar --}}
+                    <p class="text-muted mb-3">
+                        {{ Str::limit($item->komentar, 70) }}
+                    </p>
+
+                    {{-- Tanggal --}}
+                    <small class="text-secondary d-block mb-3">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ $item->created_at->format('d M Y') }}
+                    </small>
+
+                    {{-- Aksi --}}
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('penilaian.show', $item) }}" class="btn btn-sm btn-outline-info">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="{{ route('penilaian.edit', $item) }}" class="btn btn-sm btn-outline-warning">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{{ route('penilaian.destroy', $item) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus penilaian ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
+        @empty
+        <div class="col-12 text-center py-5">
+            <h5 class="text-muted">Belum ada penilaian layanan</h5>
+        </div>
+        @endforelse
     </div>
 </div>
 @endsection

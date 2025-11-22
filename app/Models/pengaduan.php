@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 use App\Models\TindakLanjut;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 class Pengaduan extends Model
 {
-    protected $table = 'pengaduan';
+    protected $table      = 'pengaduan';
     protected $primaryKey = 'pengaduan_id';
 
     protected $fillable = [
@@ -34,21 +33,25 @@ class Pengaduan extends Model
         return 'pengaduan_id';
     }
 
-
     public function kategori()
     {
         return $this->belongsTo(KategoriPengaduan::class, 'kategori_id');
     }
 
-        public function warga()
+    public function warga()
     {
         return $this->belongsTo(User::class, 'warga_id');
     }
 
-
     public function tindakLanjuts()
     {
-       
+
         return $this->hasMany(TindakLanjut::class, 'pengaduan_id');
     }
+
+    public function penilaian()
+    {
+        return $this->hasOne(PenilaianLayanan::class, 'pengaduan_id', 'pengaduan_id');
+    }
+
 }

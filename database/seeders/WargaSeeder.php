@@ -4,11 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Warga;
+use Faker\Factory as Faker;
 
 class WargaSeeder extends Seeder
 {
     public function run(): void
     {
+        $faker = Faker::create('id_ID');
+
+        // ==========================
+        // 3 Data default
+        // ==========================
         $wargas = [
             [
                 'no_ktp'        => '3173021001120001',
@@ -41,9 +47,38 @@ class WargaSeeder extends Seeder
 
         foreach ($wargas as $item) {
             Warga::firstOrCreate(
-                ['no_ktp' => $item['no_ktp']], // hindari duplicate
+                ['no_ktp' => $item['no_ktp']],
                 $item
             );
+        }
+
+        // ==========================
+        // Faker 100 warga
+        // ==========================
+        $pekerjaanList = [
+            'Karyawan Swasta', 'Wiraswasta', 'PNS', 'Guru', 'Pedagang',
+            'Mahasiswa', 'Buruh Harian', 'Sopir', 'Ojek Online',
+            'Ibu Rumah Tangga', 'Koki', 'Satpam', 'Teknisi', 'Perawat'
+        ];
+
+        foreach (range(1, 100) as $i) {
+            Warga::create([
+                'no_ktp'        => $faker->nik(),
+                'nama'          => $faker->name(),
+                'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
+                'agama'         => $faker->randomElement([
+                    'Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'
+                ]),
+                'pekerjaan'     => $faker->randomElement($pekerjaanList),
+
+                // Nomor HP Indonesia format realistis
+                'telp'          => '08' . $faker->numerify('##########'),
+
+                // Email unik dan lebih natural
+                'email'         => strtolower(
+                    str_replace(' ', '', $faker->userName()) . $faker->numerify('#') . '@mail.com'
+                ),
+            ]);
         }
     }
 }
