@@ -74,5 +74,8 @@
         </div>
         @endforelse
     </div>
+
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $penilaian->links('pagination::bootstrap-5') }}
 </div>
 @endsection

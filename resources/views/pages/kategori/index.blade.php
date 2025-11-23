@@ -77,6 +77,9 @@
             </div>
         @endforelse
     </div>
+
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $kategoris->links('pagination::bootstrap-5') }}
 </div>
 
 {{-- Tambahan efek hover --}}

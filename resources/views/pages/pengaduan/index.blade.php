@@ -88,6 +88,10 @@
         </div>
         @endforelse
     </div>
+
+    <div class="mt-4 d-flex justify-content-center">
+    {{ $pengaduans->links('pagination::bootstrap-5') }}
+    </div>
 </div>
 
 {{-- Efek Hover & Transisi --}}

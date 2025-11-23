@@ -13,7 +13,7 @@ class KategoriPengaduanController extends Controller
     {
         $kategoris = KategoriPengaduan::withCount('pengaduans')
             ->orderBy('prioritas', 'asc')
-            ->get();
+            ->paginate(10);
 
         return view('pages.kategori.index', compact('kategoris'));
     }
