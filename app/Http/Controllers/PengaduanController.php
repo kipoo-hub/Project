@@ -14,13 +14,17 @@ class PengaduanController extends Controller
      * Menampilkan daftar pengaduan.
      */
     public function index()
-    {
-        $pengaduans = Pengaduan::with(['kategori', 'warga'])
-            ->latest()
-            ->paginate(10);
+{
+    $kategoris = KategoriPengaduan::orderBy('nama')->get(); // kategori untuk filter/dropdown
 
-        return view('pages.pengaduan.index', compact('pengaduans'));
-    }
+    $pengaduans = Pengaduan::with(['kategori', 'warga'])
+        ->filter(request()->all())
+        ->orderBy('created_at', 'desc')
+        ->paginate(12);
+
+    return view('pages.pengaduan.index', compact('pengaduans', 'kategoris'));
+}
+
 
     /**
      * Formulir membuat pengaduan baru.

@@ -12,8 +12,9 @@ class KategoriPengaduanController extends Controller
     public function index()
     {
         $kategoris = KategoriPengaduan::withCount('pengaduans')
+            ->filter(request()->all())
             ->orderBy('prioritas', 'asc')
-            ->paginate(10);
+            ->paginate(12);
 
         return view('pages.kategori.index', compact('kategoris'));
     }

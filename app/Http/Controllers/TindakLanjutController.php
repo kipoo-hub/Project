@@ -1,16 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\TindakLanjut;
 use App\Models\Pengaduan;
+use App\Models\TindakLanjut;
 use Illuminate\Http\Request;
 
 class TindakLanjutController extends Controller
 {
     public function index()
     {
-        $tindak = TindakLanjut::with('pengaduan')->paginate(10);
+        $tindak = TindakLanjut::with('pengaduan')
+            ->filter(request()->all())
+            ->paginate(12);
         return view('pages.tindak.index', compact('tindak'));
     }
 
@@ -24,9 +25,9 @@ class TindakLanjutController extends Controller
     {
         $request->validate([
             'pengaduan_id' => 'required',
-            'petugas' => 'required',
-            'aksi' => 'required',
-            'catatan' => 'required'
+            'petugas'      => 'required',
+            'aksi'         => 'required',
+            'catatan'      => 'required',
         ]);
 
         TindakLanjut::create($request->all());
@@ -43,9 +44,9 @@ class TindakLanjutController extends Controller
     {
         $request->validate([
             'pengaduan_id' => 'required',
-            'petugas' => 'required',
-            'aksi' => 'required',
-            'catatan' => 'required'
+            'petugas'      => 'required',
+            'aksi'         => 'required',
+            'catatan'      => 'required',
         ]);
 
         $tindak->update($request->all());
@@ -57,4 +58,12 @@ class TindakLanjutController extends Controller
         $tindak->delete();
         return redirect()->route('pages.tindak.index')->with('success', 'Data tindak lanjut berhasil dihapus.');
     }
+
+    public function show($id)
+    {
+        $tindak = TindakLanjut::with('pengaduan')->findOrFail($id);
+
+        return view('pages.tindak.show', compact('tindak'));
+    }
+
 }

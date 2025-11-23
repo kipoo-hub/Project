@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Penilaian Layanan</h2>
         <a href="{{ route('penilaian.create') }}" class="btn btn-primary">
@@ -12,6 +13,44 @@
     </div>
 
     @include('layouts.guest.alert')
+
+    {{-- ========== FILTER FORM ========== --}}
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <form method="GET" action="{{ route('penilaian.index') }}" class="row g-3">
+
+                <div class="col-md-3">
+                    <label class="form-label">Rating</label>
+                    <select name="rating" class="form-select">
+                        <option value="">Semua</option>
+                        @for($i=1; $i<=5; $i++)
+                            <option value="{{ $i }}" {{ request('rating') == $i ? 'selected' : '' }}>
+                                {{ $i }} Bintang
+                            </option>
+                        @endfor
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Cari Komentar</label>
+                    <input type="text" name="komentar" class="form-control"
+                           value="{{ request('komentar') }}" placeholder="Cari komentar...">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Cari Judul Pengaduan</label>
+                    <input type="text" name="pengaduan" class="form-control"
+                           value="{{ request('pengaduan') }}" placeholder="Cari judul pengaduan...">
+                </div>
+
+                <div class="col-md-1 d-flex align-items-end">
+                    <button class="btn btn-primary w-100"><i class="fas fa-search"></i></button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    {{-- ========== END FILTER FORM ========== --}}
 
     <div class="row">
         @forelse($penilaian as $item)
@@ -26,7 +65,7 @@
                             {{ Str::limit($item->pengaduan->judul, 40) }}
                         </a>
                         @else
-                            <span class="text-muted">Tidak ada pengaduan</span>
+                        <span class="text-muted">Tidak ada pengaduan</span>
                         @endif
                     </h5>
 
@@ -77,5 +116,7 @@
 
     <div class="mt-4 d-flex justify-content-center">
         {{ $penilaian->links('pagination::bootstrap-5') }}
+    </div>
+
 </div>
 @endsection

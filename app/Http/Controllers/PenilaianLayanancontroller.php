@@ -9,7 +9,9 @@ class PenilaianLayananController extends Controller
 {
     public function index()
     {
-        $penilaian = PenilaianLayanan::with('pengaduan')->paginate(10);
+        $penilaian = PenilaianLayanan::with('pengaduan')
+        ->filter(request()->all())
+        ->paginate(12);
         return view('pages.penilaian.index', compact('penilaian'));
     }
 

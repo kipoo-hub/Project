@@ -11,7 +11,7 @@ class KategoriPengaduan extends Model
 
     protected $fillable = [
         'nama',
-        'prioritas', // kalau kamu pakai field ini di orderBy
+        'prioritas',
         'is_aktif',
         'Pelayanan',
         'Teknis',
@@ -25,6 +25,24 @@ class KategoriPengaduan extends Model
     {
         return $this->hasMany(Pengaduan::class, 'kategori_id');
     }
+    public function scopeFilter($query, $filters)
+    {
+        // Filter berdasarkan nama kategori
+        if (!empty($filters['nama'])) {
+            $query->where('nama', 'like', '%' . $filters['nama'] . '%');
+        }
 
-    
+        // Filter berdasarkan prioritas
+        if (!empty($filters['prioritas'])) {
+            $query->where('prioritas', $filters['prioritas']);
+        }
+
+        // Filter berdasarkan status aktif
+        if (isset($filters['is_aktif'])) {
+            $query->where('is_aktif', $filters['is_aktif']);
+        }
+
+        return $query;
+    }
+
 }
