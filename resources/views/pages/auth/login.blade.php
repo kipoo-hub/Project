@@ -1,44 +1,57 @@
-@extends('layouts.guest.app')
+@extends('layouts.guest.auth')
 
 @section('title', 'Login')
 
+@section('style')
+<style>
+    .login-card {
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 40px;
+        width: 400px;
+        color: #fff;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .login-card label { color: #fff; }
+    .btn-login { border-radius: 10px; font-weight: 600; }
+</style>
+@endsection
+
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="mb-4 text-center">Login</h3>
+<div class="login-card">
 
-                    @if(session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>
-                    @endif
-                    @if($errors->any())
-                        <div class="alert alert-danger">{{ $errors->first() }}</div>
-                    @endif
+    <h2 class="text-center mb-4">Login Akun</h2>
 
-                    <form method="POST" action="{{ url('/login') }}">
-                        @csrf
-                        <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" required autofocus>
-                        </div>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if($errors->any())
+        <div class="alert alert-danger">{{ $errors->first() }}</div>
+    @endif
 
-                        <div class="mb-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
-                        </div>
+    <form method="POST" action="{{ url('/login') }}">
+        @csrf
 
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
-
-                        <p class="mt-3 text-center">
-                            Belum punya akun?
-                            <a href="{{ route('register') }}">Daftar disini</a>
-                        </p>
-                    </form>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required autofocus>
         </div>
-    </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-light w-100 btn-login">
+            Login
+        </button>
+
+        <p class="mt-3 text-center">
+            Belum punya akun?
+            <a href="{{ route('register') }}" class="text-light fw-bold">Daftar disini</a>
+        </p>
+    </form>
+
 </div>
 @endsection
