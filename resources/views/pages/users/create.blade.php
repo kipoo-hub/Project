@@ -6,7 +6,7 @@
 <div class="container py-4">
     <h3>Tambah User</h3>
 
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -29,8 +29,28 @@
             <input type="text" name="role" class="form-control">
         </div>
 
+        {{-- Upload Foto Profil --}}
+        <div class="mb-3">
+            <label>Foto Profil</label>
+            <input type="file" name="profile_picture" class="form-control" accept="image/*" onchange="previewImg(event)">
+        </div>
+
+        {{-- Preview Foto --}}
+        <div class="mb-3">
+            <img id="preview" src="#" alt="Preview Foto" style="display:none; max-width:120px;" class="rounded">
+        </div>
+
         <button class="btn btn-primary">Simpan</button>
         <a href="{{ route('users.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
+
+<script>
+function previewImg(event) {
+    const output = document.getElementById('preview');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.style.display = 'block';
+}
+</script>
+
 @endsection

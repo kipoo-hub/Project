@@ -1,11 +1,13 @@
-@if($pengaduan->status == 'draft')
-    <span class="badge bg-secondary">Draft</span>
-@elseif($pengaduan->status == 'terkirim')
-    <span class="badge bg-info">Terkirim</span>
-@elseif($pengaduan->status == 'proses')
-    <span class="badge bg-warning">Diproses</span>
-@elseif($pengaduan->status == 'selesai')
+@php
+    $status = $pengaduan->status ?? null;
+@endphp
+
+@if($status === 'selesai')
     <span class="badge bg-success">Selesai</span>
-@elseif($pengaduan->status == 'ditolak')
-    <span class="badge bg-danger">Ditolak</span>
+@elseif($status === 'proses')
+    <span class="badge bg-warning text-dark">Dalam Proses</span>
+@elseif($status === 'pending')
+    <span class="badge bg-secondary">Pending</span>
+@else
+    <span class="badge bg-dark">{{ $status ?? 'Tidak diketahui' }}</span>
 @endif

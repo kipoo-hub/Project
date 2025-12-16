@@ -78,7 +78,7 @@ class KategoriPengaduanController extends Controller
         $kategori->load(['pengaduans' => function ($query) {
             $query->latest()->take(5);
         }]);
-
+        $kategoris = KategoriPengaduan::all();
         return view('pages.kategori.show', compact('kategori'));
     }
 
@@ -92,6 +92,8 @@ class KategoriPengaduanController extends Controller
             'sedang' => 'Sedang (4-7 hari)',
             'rendah' => 'Rendah (8-14 hari)',
         ];
+
+        $kategoris = KategoriPengaduan::all();
         return view('pages.kategori.edit', compact('kategori', 'prioritas_list'));
     }
 

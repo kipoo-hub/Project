@@ -81,7 +81,7 @@ class PengaduanController extends Controller
      */
     public function show(Pengaduan $pengaduan)
     {
-        $pengaduan->load(['kategori', 'warga', 'tindakLanjuts.petugas']);
+        $pengaduan->load(['kategori', 'warga', 'tindakLanjuts']);
 
         return view('pages.pengaduan.show', compact('pengaduan'));
     }

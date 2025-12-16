@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Sicepu - Sistem Pengaduan & Aspirasi')</title>
+    <title>@yield('title', 'Suara Rakyat - Sistem Pengaduan & Aspirasi')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,42 +20,66 @@
 
     <!-- Custom Styles for Floating WhatsApp Button -->
     <style>
-        /* Styling untuk Floating Button */
+        /* Floating WhatsApp Button – Premium Style */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             z-index: 1000;
-            /* Pastikan di atas elemen lain */
+            animation: floatAnim 3s ease-in-out infinite;
         }
 
+        /* Button Style */
         .whatsapp-btn {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            /* Warna hijau WhatsApp */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #25d366, #21bd5a);
             color: white;
+
             border-radius: 50%;
-            text-align: center;
-            line-height: 60px;
-            font-size: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            font-size: 32px;
             text-decoration: none;
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, .25),
+                0 0 12px rgba(37, 211, 102, .5);
+
+            transition: .3s ease-in-out;
+            backdrop-filter: blur(5px);
         }
 
+        /* Hover Effect */
         .whatsapp-btn:hover {
-            background-color: #128c7e;
-            /* Warna lebih gelap saat hover */
-            transform: scale(1.1);
-            /* Efek zoom saat hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #1ebe5d, #17a74e);
+            transform: scale(1.12) translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, .3),
+                0 0 18px rgba(37, 211, 102, .7);
         }
 
+        /* Icon adjustment */
         .whatsapp-btn i {
-            margin-top: 5px;
-            /* Penyesuaian posisi ikon */
+            margin-top: 2px;
+        }
+
+        /* Floating animation (naik turun halus) */
+        @keyframes floatAnim {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
     </style>
 
@@ -85,20 +109,6 @@
     <!-- Scripts -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Custom Script for Floating WhatsApp Button -->
-
-    <script>
-        // Opsional: Tambahkan animasi atau fungsi tambahan jika diperlukan
-        // Misalnya, untuk menutup tombol jika tidak diperlukan
-        document.addEventListener('DOMContentLoaded', function() {
-            // Kode ini bisa diperluas, misalnya untuk animasi fade-in
-            const whatsappBtn = document.querySelector('.whatsapp-btn');
-            whatsappBtn.addEventListener('click', function() {
-                // Opsional: Track klik untuk analytics
-                console.log('WhatsApp button clicked');
-            });
-        });
-    </script>
 
     @stack('js')
 </body>

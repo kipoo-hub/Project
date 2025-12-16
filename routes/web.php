@@ -11,34 +11,50 @@ use App\Http\Controllers\TindakLanjutController;
 use App\Http\Controllers\PenilaianLayananController;
 use App\Http\Controllers\KategoriPengaduanController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('warga', WargaController::class);
-Route::resource('kategori', KategoriPengaduanController::class);
-Route::resource('pengaduan', PengaduanController::class);
-Route::resource('tindak', TindakLanjutController::class);
-Route::resource('penilaian', PenilaianLayananController::class);
+// ============================
+// PUBLIC
+// ============================
+Route::get('/', function () {
+    return view('pages.home.home');
+})->name('home'); // optional
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+// ============================
+// AUTH (LOGIN & REGISTER)
+// ============================
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/home', function () {
-    return view('pages.home');
-})->name('home')->middleware('auth');
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-Route::view('/about', 'pages.about.index')->name('about');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('CekLogin');
 
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/profile/edit', [ProfileController::class, 'edit']);
-Route::post('/profile/update', [ProfileController::class, 'update']);
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+// ============================
+// PRIVATE (WAJIB LOGIN)
+// ============================
+Route::middleware(['CekLogin'])->group(function () {
+
+    // Dashboard
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // CRUD
+    Route::resource('users', UserController::class);
+    Route::resource('warga', WargaController::class);
+    Route::resource('kategori', KategoriPengaduanController::class);
+    Route::resource('pengaduan', PengaduanController::class);
+    Route::resource('tindak', TindakLanjutController::class);
+    Route::resource('penilaian', PenilaianLayananController::class);
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    // About Page
+    Route::view('/about', 'pages.about.index')->name('about');
+});

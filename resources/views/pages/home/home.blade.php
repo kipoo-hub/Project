@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bina Desa - Pengaduan & Aspirasi Rakyat</title>
+    <title>Suara Rakyat - Pengaduan & Aspirasi Rakyat</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -46,13 +46,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
         }
 
-        .whatsapp-float {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 1080;
-        }
-
         .back-to-top {
             right: 20px;
             bottom: 90px;
@@ -72,114 +65,131 @@
 <body>
 
     <header>
-        <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
         <!-- Topbar Start -->
-        <div class="container-fluid topbar px-0 px-lg-4 bg-light py-2 d-none d-lg-block">
-            <div class="container">
-                <div class="row gx-0 align-items-center">
-                    <div class="col-lg-8 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <div class="border-end border-primary pe-3">
-                                <a href="#" class="text-muted small"><i
-                                        class="fas fa-map-marker-alt text-primary me-2"></i>Jl. Umban Sari Publik No.12,
-                                    Pekanbaru</a>
-                            </div>
-                            <div class="ps-3">
-                                <a href="mailto:example@gmail.com" class="text-muted small"><i
-                                        class="fas fa-envelope text-primary me-2"></i>BinaDesa@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 text-center text-lg-end">
-                        <div class="d-flex justify-content-end">
-                            <div class="d-flex border-end border-primary pe-3">
-                                <a class="btn p-0 text-primary me-3" href="#" aria-label="facebook"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn p-0 text-primary me-3" href="#" aria-label="twitter"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn p-0 text-primary me-3" href="#" aria-label="instagram"><i
-                                        class="fab fa-instagram"></i></a>
-                                <a class="btn p-0 text-primary me-0" href="#" aria-label="linkedin"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <div class="dropdown ms-3">
-                                <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><small><i class="fas fa-globe-europe text-primary me-2"></i>
-                                        English</small></a>
-                                <ul class="dropdown-menu rounded">
-                                    <li><a href="#" class="dropdown-item">English</a></li>
-                                    <li><a href="#" class="dropdown-item">French</a></li>
-                                    <li><a href="#" class="dropdown-item">Spanish</a></li>
-                                    <li><a href="#" class="dropdown-item">Arabic</a></li>
-                                </ul>
-                            </div>
-                        </div>
+        <div class="container-fluid topbar bg-light py-1 d-none d-lg-block">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Umban+Sari+Publik+No.12,+Pekanbaru"
+                        target="_blank" class="text-muted small">
+                        <i class="fas fa-map-marker-alt text-primary me-1"></i>
+                        Jl. Umban Sari Publik No.12, Pekanbaru
+                    </a>
+                    <a href="mailto:SuaraRakyat@gmail.com" class="text-muted small">
+                        <i class="fas fa-envelope text-primary me-1"></i>
+                        SuaraRakyat@gmail.com
+                    </a>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Sosial Media -->
+                    <a href="https://facebook.com/SuaraRakyat" target="_blank" class="text-primary"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/SuaraRakyat" target="_blank" class="text-primary"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/SuaraRakyat" target="_blank" class="text-primary"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/SuaraRakyat" target="_blank" class="text-primary"><i
+                            class="fab fa-linkedin-in"></i></a>
+
+                    <!-- Bahasa Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="text-dark dropdown-toggle small" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe-europe text-primary me-1"></i>{{ strtoupper(app()->getLocale()) }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a href="{{ url('/lang/en') }}" class="dropdown-item">English</a></li>
+                            <li><a href="{{ url('/lang/id') }}" class="dropdown-item">Indonesia</a></li>
+                            <li><a href="{{ url('/lang/fr') }}" class="dropdown-item">French</a></li>
+                            <li><a href="{{ url('/lang/es') }}" class="dropdown-item">Spanish</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Topbar End -->
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+        <!-- Navbar Start -->
+        <div class="container-fluid nav-bar bg-white shadow-sm">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-light py-3">
+
                     <!-- Logo / Brand -->
-                    <a href="{{ url('/') }}" class="navbar-brand p-0">
-                        <h1 class="text-primary mb-0">
-                            <i class="fab fa-slack me-2"></i> Bina Desa
-                        </h1>
+                    <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center gap-3">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Suara Rakyat"
+                            style="height: 130px; width: auto; object-fit: contain;">
+
+                        <div class="d-flex flex-column justify-content-center">
+                            <span class="fw-bold text-primary" style="font-size: 22px; line-height: 1.2;">Suara
+                                Rakyat</span>
+                            <span class="text-muted" style="font-size: 14px; line-height: 1.2;">Pengaduan &
+                                Aspirasi</span>
+                        </div>
                     </a>
 
                     <!-- Toggler Button -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
+                        data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
                     </button>
 
                     <!-- Navbar Links -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav mx-0 mx-lg-auto">
-                            <a href="{{ route('home') }}" class="nav-item nav-link active">Beranda</a>
-                            <a href="{{ route('pengaduan.index') }}" class="nav-item nav-link">Pengaduan</a>
-                            <a href="{{ route('kategori.index') }}" class="nav-item nav-link">Kategori</a>
-                            <a href="{{ route('about') }}" class="nav-item nav-link">
-                                <i class="fas fa-info-circle"></i> Tentang
-                            </a>
-
-                            <!-- Dropdown Menu -->
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">Status</a>
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a href="{{ route('home') }}"
+                                    class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
+                            <li class="nav-item"><a href="{{ route('pengaduan.index') }}"
+                                    class="nav-link {{ request()->routeIs('pengaduan.*') ? 'active' : '' }}">Pengaduan</a>
+                            </li>
+                            <li class="nav-item"><a href="{{ route('kategori.index') }}"
+                                    class="nav-link {{ request()->routeIs('kategori.*') ? 'active' : '' }}">Kategori</a>
+                            </li>
+                            <li class="nav-item"><a href="{{ route('about') }}"
+                                    class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"><i
+                                        class="fas fa-info-circle me-1"></i> Tentang</a></li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown">Status</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('tindak.index') }}" class="dropdown-item">Tindak Lanjut</a>
                                     </li>
                                     <li><a href="{{ route('penilaian.index') }}" class="dropdown-item">Penilaian</a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
 
-                        <div class="nav-btn px-3">
-                            <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-4">
-                                <i class="fas fa-sign-in-alt"></i> Login
-                            </a>
+                        <!-- Login / Profile -->
+                        <div class="d-flex">
+                            @auth
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4 dropdown-toggle"
+                                        data-bs-toggle="dropdown">
+                                        <i class="fas fa-user me-1"></i> {{ Auth::user()->name }}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-4">
+                                    <i class="fas fa-sign-in-alt me-1"></i> Login
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
-        <!-- Navbar & Hero End -->
+        <!-- Navbar End -->
     </header>
+
+
 
     <main>
         <!-- Modal Search (kehilangan aria-labelledby diganti) -->
@@ -204,61 +214,75 @@
                 </div>
             </div>
         </div>
-
         <!-- Carousel Start -->
         <div class="header-carousel owl-carousel">
+
+            <!-- ITEM 1 -->
             <div class="header-carousel-item bg-primary">
-                <div class="carousel-caption">
+                <div class="carousel-caption py-5">
                     <div class="container">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-lg-7 animated fadeInLeft">
-                                <div class="text-sm-center text-md-start">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Bina Desa</h4>
-                                    <h1 class="display-1 text-white mb-4">Sampaikan Pengaduan dan Aspirasi Anda untuk
-                                        Kemajuan Desa.</h1>
-                                    <p class="mb-5 fs-5">Bina Desa menyediakan layanan resmi bagi masyarakat untuk
-                                        melaporkan keluhan, memberikan masukan, dan menyampaikan aspirasi demi
-                                        terciptanya pelayanan publik yang lebih transparan, responsif, dan
-                                        berkelanjutan.</p>
-                                </div>
+                        <div class="row align-items-center g-5">
+
+                            <!-- TEXT SECTION -->
+                            <div class="col-lg-6 animated fadeInLeft">
+                                <h4 class="text-white text-uppercase fw-bold mb-3">
+                                    Welcome To Suara Rakyat
+                                </h4>
+                                <h1 class="display-3 text-white fw-semibold mb-4">
+                                    Sampaikan Pengaduan & Aspirasi Anda
+                                </h1>
+                                <p class="text-white-50 fs-5 mb-4">
+                                    Suara Rakyat menyediakan layanan resmi untuk masyarakat
+                                    melaporkan keluhan, memberikan masukan, dan menyampaikan aspirasi
+                                    demi pelayanan publik yang lebih transparan dan responsif.
+                                </p>
                             </div>
-                            <div class="col-lg-5 animated fadeInRight">
-                                <div class="calrousel-img" style="object-fit: cover;">
-                                    <img src="{{ asset('assets/img/carousel-2.png') }}" class="img-fluid w-100"
-                                        alt="Ilustrasi carousel" loading="lazy">
-                                </div>
+
+                            <!-- IMAGE -->
+                            <div class="col-lg-6 animated fadeInRight text-center">
+                                <img src="{{ asset('assets/img/carousel-2.png') }}" class="img-fluid carousel-image"
+                                    alt="Ilustrasi carousel">
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ITEM 2 -->
             <div class="header-carousel-item bg-primary">
-                <div class="carousel-caption">
+                <div class="carousel-caption py-5">
                     <div class="container">
-                        <div class="row gy-4 gy-lg-0 gx-0 gx-lg-5 align-items-center">
-                            <div class="col-lg-5 animated fadeInLeft">
-                                <div class="calrousel-img">
-                                    <img src="{{ asset('assets/img/carousel-2.png') }}" class="img-fluid w-100"
-                                        alt="Ilustrasi carousel" loading="lazy">
-                                </div>
+                        <div class="row align-items-center g-5 flex-lg-row-reverse">
+
+                            <!-- TEXT SECTION -->
+                            <div class="col-lg-6 animated fadeInRight text-lg-end">
+                                <h4 class="text-white text-uppercase fw-bold mb-3">
+                                    Welcome To Suara Rakyat
+                                </h4>
+                                <h1 class="display-3 text-white fw-semibold mb-4">
+                                    Suarakan Pendapat Anda Untuk Kemajuan Desa
+                                </h1>
+                                <p class="text-white-50 fs-5 mb-4">
+                                    Kami hadir sebagai wadah aspirasi masyarakat agar setiap suara
+                                    dapat disampaikan secara mudah, cepat, dan terstruktur.
+                                </p>
                             </div>
-                            <div class="col-lg-7 animated fadeInRight">
-                                <div class="text-sm-center text-md-end">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To Bina Desa</h4>
-                                    <h1 class="display-1 text-white mb-4">Sampaikan Pengaduan dan Aspirasi Anda untuk
-                                        Kemajuan Desa.</h1>
-                                    <p class="mb-5 fs-5">Bina Desa menyediakan layanan resmi bagi masyarakat untuk
-                                        melaporkan keluhan, memberikan masukan, dan menyampaikan aspirasi demi
-                                        terciptanya pelayanan publik yang lebih transparan, responsif, dan
-                                        berkelanjutan.</p>
-                                </div>
+
+                            <!-- IMAGE -->
+                            <div class="col-lg-6 animated fadeInLeft text-center">
+                                <img src="{{ asset('assets/img/carousel-2.png') }}" class="img-fluid carousel-image"
+                                    alt="Ilustrasi carousel">
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- Carousel End -->
+
 
         <!-- Feature Start -->
         <section class="container-fluid feature bg-light py-5">
@@ -269,7 +293,7 @@
                     <h4 class="text-primary mb-2">Layanan Kami</h4>
                     <h1 class="display-5 fw-bold mb-3">Sampaikan Aspirasi & Pengaduan Anda</h1>
                     <p class="text-muted mb-0">
-                        Bina Desa menyediakan layanan pelaporan yang aman, transparan, dan mudah digunakan untuk
+                        Suara Rakyat menyediakan layanan pelaporan yang aman, transparan, dan mudah digunakan untuk
                         membantu meningkatkan kualitas pelayanan publik.
                     </p>
                 </div>
@@ -321,7 +345,8 @@
                         <article class="feature-item p-4 pt-0 text-center shadow-sm bg-white rounded h-100">
                             <div
                                 class="feature-icon p-4 mb-4 bg-warning text-white rounded-circle d-inline-flex justify-content-center align-items-center">
-                                <i class="fas fa-star-half-alt fa-3x" aria-hidden="true"></i> </div>
+                                <i class="fas fa-star-half-alt fa-3x" aria-hidden="true"></i>
+                            </div>
                             <h4 class="mb-3">Penilaian Layanan</h4>
                             <p class="text-muted mb-4"> Berikan penilaian objektif terhadap kualitas pelayanan publik
                                 guna meningkatkan mutu layanan. </p> <a
@@ -330,13 +355,14 @@
                                 Beri Penilaian </a>
                         </article>
                     </div>
-                    
+
                     <!-- Fitur 4 -->
                     <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                         <article class="feature-item p-4 pt-0 text-center shadow-sm bg-white rounded h-100">
                             <div
                                 class="feature-icon p-4 mb-4 bg-info text-white rounded-circle d-inline-flex justify-content-center align-items-center">
-                                <i class="fas fa-tasks fa-3x" aria-hidden="true"></i> </div>
+                                <i class="fas fa-tasks fa-3x" aria-hidden="true"></i>
+                            </div>
                             <h4 class="mb-3">Tindak Lanjut Pengaduan</h4>
                             <p class="text-muted mb-4"> Pantau proses penanganan laporan Anda secara transparan dan
                                 tepat waktu. </p> <a class="btn btn-info rounded-pill py-2 px-4 text-white"
@@ -354,81 +380,37 @@
 
 
         <!-- About Start -->
-        <div class="container-fluid bg-light about pb-5">
-            <div class="container pb-5">
-                <div class="row g-5">
-                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="about-item-content bg-white rounded p-5 h-100">
-                            <h4 class="text-primary">Tentang Pengaduan & Aspirasi</h4>
-                            <h1 class="display-4 mb-4">Sampaikan Pengaduan dan Aspirasi Anda</h1>
-                            <p>Kami menyediakan saluran resmi untuk menerima pengaduan dan aspirasi masyarakat. Setiap
-                                laporan akan ditindaklanjuti secara profesional dengan tujuan menyelesaikan masalah dan
-                                meningkatkan layanan publik.</p>
-                            <p>Anda dapat mengirimkan pengaduan terkait layanan, kebijakan, atau hal lain yang perlu
-                                perbaikan. Aspirasi juga sangat kami hargai untuk perbaikan bersama.</p>
-                            <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Penanganan cepat dan
-                                terstruktur</p>
-                            <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Transparansi tindak
-                                lanjut
-                                dan status laporan</p>
-                            <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Privasi dan opsi
-                                pelaporan anonim</p>
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{ route('pengaduan.create') }}">
+        <div class="container-fluid py-5" style="background: #f8f9fa;">
+            <div class="container py-5">
+                <div class="row align-items-center g-5">
+
+                    <!-- Left Content -->
+                    <div class="col-lg-6">
+                        <div class="p-4 p-lg-5 bg-white rounded-4 shadow-sm h-100">
+                            <h5 class="text-primary fw-bold mb-2">Tentang Pengaduan & Aspirasi</h5>
+                            <h2 class="display-6 mb-4">Sampaikan Pengaduan dan Aspirasi Anda dengan Mudah</h2>
+                            <p class="mb-3">Saluran resmi untuk menerima pengaduan dan aspirasi masyarakat. Setiap
+                                laporan akan ditindaklanjuti secara profesional untuk perbaikan layanan publik.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Penanganan cepat &
+                                    terstruktur</li>
+                                <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Transparansi tindak
+                                    lanjut laporan</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Opsi pelaporan anonim & privasi
+                                    terjaga</li>
+                            </ul>
+                            <a href="{{ route('pengaduan.create') }}" class="btn btn-primary rounded-pill py-2 px-4">
                                 Laporkan Sekarang
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
-                        <div class="bg-white rounded p-5 h-100">
-                            <div class="row g-4 justify-content-center">
-                                <div class="col-12">
-                                    <div class="rounded bg-light">
-                                        <img src="{{ asset('assets/img/about-1.png') }}"
-                                            class="img-fluid rounded w-100" alt="Ilustrasi Pengaduan dan Aspirasi"
-                                            loading="lazy">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold"
-                                                data-toggle="counter-up">1.254</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Pengaduan Ditangani</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold"
-                                                data-toggle="counter-up">3.842</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Aspirasi Diterima</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">45</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Tim Penanganan</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">91</span>
-                                            <span class="h1 fw-bold text-primary">%</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Tingkat Penyelesaian</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <!-- Right Content -->
+                    <div class="col-lg-6 text-center">
+                        <img src="{{ asset('assets/img/about-1.png') }}" alt="Ilustrasi Pengaduan dan Aspirasi"
+                            class="img-fluid rounded-4 shadow-sm">
                     </div>
+
                 </div>
             </div>
         </div>
@@ -476,9 +458,11 @@
                                     <div id="collapseFaqTwo" class="accordion-collapse collapse"
                                         aria-labelledby="faqTwo" data-bs-parent="#accordionFAQ">
                                         <div class="accordion-body">
-                                            Ya. Pilih opsi "Pelaporan Anonim" saat mengisi form untuk mengirim laporan
+                                            Ya. Pilih opsi "Pelaporan Anonim" saat mengisi form untuk mengirim
+                                            laporan
                                             tanpa
-                                            mengungkap identitas Anda. Namun apabila perlu klarifikasi, tim tidak dapat
+                                            mengungkap identitas Anda. Namun apabila perlu klarifikasi, tim tidak
+                                            dapat
                                             menghubungi pelapor anonim.
                                         </div>
                                     </div>
@@ -537,173 +521,325 @@
         </div>
         <!-- FAQs End -->
 
+        <!-- ===== IDENTITAS PENGEMBANG ===== -->
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-6">Identitas Pengembang</h2>
+                <p class="text-muted fs-6">Informasi lengkap pengembang sistem Pengaduan & Aspirasi</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div
+                        class="card shadow-lg border-0 rounded-4 text-center p-4 position-relative overflow-hidden hover-card">
+
+                        <!-- Decorative Gradient -->
+                        <div class="position-absolute top-0 start-0 w-100 h-100"
+                            style="background: linear-gradient(135deg, #0d6efd33, #6f42c133); z-index: 0;"></div>
+
+                        <!-- FOTO -->
+                        <div class="position-relative z-1">
+                            <img src="{{ asset('assets/img/owner.jpg') }}"
+                                class="rounded-circle shadow-lg mx-auto mb-3 border border-4 border-white"
+                                width="140" height="140" style="object-fit: cover;" alt="Foto Pengembang">
+                        </div>
+
+                        <!-- NAMA -->
+                        <h4 class="fw-bold mb-1 z-1 position-relative">Muhammad Taufiq</h4>
+                        <p class="text-muted mb-3 z-1 position-relative">Mahasiswa Sistem Informasi</p>
+
+                        <!-- DATA -->
+                        <table class="table table-borderless text-start w-75 mx-auto z-1 position-relative">
+                            <tr>
+                                <th width="120">NIM</th>
+                                <td>: 2457301099</td>
+                            </tr>
+                            <tr>
+                                <th>Prodi</th>
+                                <td>: Sistem Informasi</td>
+                            </tr>
+                            <tr>
+                                <th>Kampus</th>
+                                <td>: Politeknik Caltex Riau</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>: taufiq24si@mahasiswa.pcr.ac.id</td>
+                            </tr>
+                        </table>
+
+                        <!-- SOSIAL MEDIA -->
+                        <div class="d-flex justify-content-center gap-3 mt-3 z-1 position-relative">
+                            <a href="https://linkedin.com/in/username" target="_blank"
+                                class="btn btn-outline-primary rounded-circle social-btn"
+                                style="width: 45px; height: 45px;">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/username" target="_blank"
+                                class="btn btn-outline-dark rounded-circle social-btn"
+                                style="width: 45px; height: 45px;">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://instagram.com/username" target="_blank"
+                                class="btn btn-outline-danger rounded-circle social-btn"
+                                style="width: 45px; height: 45px;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional Hover & Shadow Effects -->
+        <style>
+            .hover-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                cursor: default;
+            }
+
+            .hover-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            }
+
+            .social-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+            }
+
+            .social-btn:hover {
+                transform: translateY(-3px) scale(1.1);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+
+
+
         <!-- Footer Start -->
         <footer class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+
+            <style>
+                .footer-contact-card {
+                    display: flex;
+                    align-items: center;
+                    gap: 18px;
+                    padding: 18px 22px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);
+                    backdrop-filter: blur(6px);
+                    transition: .25s ease;
+                }
+
+                .footer-contact-card:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                    transform: translateY(-2px);
+                }
+
+                .footer-contact-icon {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 12px;
+                    background: rgba(255, 255, 255, 0.12);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .footer-contact-icon i {
+                    font-size: 1.35rem;
+                }
+            </style>
+
             <div class="container py-5">
                 <div class="row g-5">
+
+                    <!-- LEFT SIDE -->
                     <div class="col-xl-9">
                         <div class="mb-5">
                             <div class="row g-4">
+
+                                <!-- LOGO + ABOUT -->
                                 <div class="col-md-6 col-lg-6 col-xl-5">
                                     <div class="footer-item">
-                                        <a href="{{ url('/') }}" class="p-0">
-                                            <h3 class="text-white"><i class="fab fa-slack me-3"></i> Bina Desa</h3>
+
+                                        <a href="{{ url('/') }}"
+                                            class="navbar-brand p-0 d-flex align-items-center gap-3 mb-3">
+                                            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Suara Rakyat"
+                                                style="height: 60px; object-fit: contain;">
+
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold text-primary" style="font-size: 20px;">Suara
+                                                    Rakyat</span>
+                                                <span class="text-muted" style="font-size: 13px;">Pengaduan &
+                                                    Aspirasi</span>
+                                            </div>
                                         </a>
-                                        <p class="text-white mb-4">Bina Desa adalah saluran resmi untuk menerima
-                                            pengaduan dan aspirasi masyarakat. Kirim laporan, pantau status, dan
-                                            dapatkan
-                                            informasi tindak lanjut dari tim kami.</p>
-                                        <div class="footer-btn d-flex">
-                                            <a class="btn btn-md-square rounded-circle me-3" href="#"
-                                                aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-md-square rounded-circle me-3" href="#"
-                                                aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-md-square rounded-circle me-3" href="#"
-                                                aria-label="instagram"><i class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-md-square rounded-circle me-0" href="#"
-                                                aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+
+                                        <p class="text-white mb-4">
+                                            Suara Rakyat adalah saluran resmi untuk menerima pengaduan dan aspirasi
+                                            masyarakat.
+                                            Kirim laporan, pantau status, dan dapatkan informasi tindak lanjut dari
+                                            tim
+                                            kami.
+                                        </p>
+
+                                        <div class="d-flex gap-2">
+                                            <a class="btn btn-md-square rounded-circle" href="#"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                            <a class="btn btn-md-square rounded-circle" href="#"><i
+                                                    class="fab fa-twitter"></i></a>
+                                            <a class="btn btn-md-square rounded-circle"
+                                                href="https://www.instagram.com/pikpuks_"><i
+                                                    class="fab fa-instagram"></i></a>
+                                            <a class="btn btn-md-square rounded-circle" href="#"><i
+                                                    class="fab fa-linkedin-in"></i></a>
                                         </div>
+
                                     </div>
                                 </div>
 
+                                <!-- QUICK LINKS -->
                                 <div class="col-md-6 col-lg-6 col-xl-3">
                                     <div class="footer-item">
                                         <h4 class="text-white mb-4">Tautan Cepat</h4>
-                                        <a href="{{ route('home') }}"><i
-                                                class="fas fa-angle-right me-2"></i>Beranda</a><br>
+
+                                        <a href="{{ route('home') }}"><i class="fas fa-angle-right me-2"></i>
+                                            Beranda</a><br>
                                         <a href="{{ route('pengaduan.index') }}"><i
-                                                class="fas fa-angle-right me-2"></i>Pengaduan</a><br>
+                                                class="fas fa-angle-right me-2"></i> Pengaduan</a><br>
                                         <a href="{{ route('kategori.index') }}"><i
-                                                class="fas fa-angle-right me-2"></i>Kategori Pengaduan</a><br>
-                                        <a href="{{ route('tindak.index') }}"><i
-                                                class="fas fa-angle-right me-2"></i>Tindak Lanjut</a><br>
+                                                class="fas fa-angle-right me-2"></i> Kategori</a><br>
+                                        <a href="{{ route('tindak.index') }}"><i class="fas fa-angle-right me-2"></i>
+                                            Tindak Lanjut</a><br>
                                         <a href="{{ route('penilaian.index') }}"><i
-                                                class="fas fa-angle-right me-2"></i>Penilaian Layanan</a>
+                                                class="fas fa-angle-right me-2"></i> Penilaian Layanan</a>
                                     </div>
                                 </div>
 
+                                <!-- GALLERY -->
                                 <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="footer-item">
-                                        <h4 class="mb-4 text-white">Galeri & Ilustrasi</h4>
+                                        <h4 class="text-white mb-4">Galeri & Ilustrasi</h4>
+
                                         <div class="row g-3">
-                                            <div class="col-4">
-                                                <div class="footer-instagram rounded">
-                                                    <img src="{{ asset('assets/img/instagram-footer-1.jpg') }}"
-                                                        class="img-fluid w-100" alt="galeri-1" loading="lazy">
-                                                    <div class="footer-search-icon">
-                                                        <a href="{{ asset('assets/img/instagram-footer-1.jpg') }}"
-                                                            data-lightbox="footerInstagram-1" class="my-auto"
-                                                            aria-label="lihat gambar"><i
-                                                                class="fas fa-link text-white"></i></a>
+                                            @foreach ([1, 2, 3] as $i)
+                                                <div class="col-4">
+                                                    <div class="footer-instagram rounded position-relative">
+                                                        <img src="{{ asset('assets/img/instagram-footer-' . $i . '.jpg') }}"
+                                                            class="img-fluid w-100 rounded"
+                                                            alt="galeri-{{ $i }}">
+                                                        <div class="footer-search-icon">
+                                                            <a href="{{ asset('assets/img/instagram-footer-' . $i . '.jpg') }}"
+                                                                data-lightbox="footer-gallery"
+                                                                aria-label="lihat gambar">
+                                                                <i class="fas fa-link text-white"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="footer-instagram rounded">
-                                                    <img src="{{ asset('assets/img/instagram-footer-2.jpg') }}"
-                                                        class="img-fluid w-100" alt="galeri-2" loading="lazy">
-                                                    <div class="footer-search-icon">
-                                                        <a href="{{ asset('assets/img/instagram-footer-2.jpg') }}"
-                                                            data-lightbox="footerInstagram-2" class="my-auto"
-                                                            aria-label="lihat gambar"><i
-                                                                class="fas fa-link text-white"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="footer-instagram rounded">
-                                                    <img src="{{ asset('assets/img/instagram-footer-3.jpg') }}"
-                                                        class="img-fluid w-100" alt="galeri-3" loading="lazy">
-                                                    <div class="footer-search-icon">
-                                                        <a href="{{ asset('assets/img/instagram-footer-3.jpg') }}"
-                                                            data-lightbox="footerInstagram-3" class="my-auto"
-                                                            aria-label="lihat gambar"><i
-                                                                class="fas fa-link text-white"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
+
                                     </div>
                                 </div>
 
                             </div>
                         </div>
 
-                        <div class="pt-5" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
-                            <div class="row g-0">
-                                <div class="col-12">
-                                    <div class="row g-4">
-                                        <div class="col-lg-6 col-xl-4">
-                                            <div class="d-flex">
-                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
-                                                    <i class="fas fa-map-marker-alt fa-2x"></i>
-                                                </div>
-                                                <div>
-                                                    <h4 class="text-white">Alamat</h4>
-                                                    <p class="mb-0">Jl. Umban Sari Publik No.12, Pekanbaru</p>
-                                                </div>
+                        <!-- CONTACT SECTION PREMIUM -->
+                        <div class="pt-5" style="border-top:1px solid rgba(255,255,255,0.08);">
+                            <div class="row g-4">
+
+                                <!-- Address -->
+                                <div class="col-lg-4">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Umban+Sari+Publik+No.12,+Pekanbaru"
+                                        target="_blank" class="text-white text-decoration-none">
+                                        <div class="footer-contact-card">
+                                            <div class="footer-contact-icon">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Alamat</div>
+                                                <small class="text-white-50">Jl. Umban Sari Publik No.12,
+                                                    Pekanbaru</small>
                                             </div>
                                         </div>
-
-                                        <div class="col-lg-6 col-xl-4">
-                                            <div class="d-flex">
-                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
-                                                    <i class="fas fa-envelope fa-2x"></i>
-                                                </div>
-                                                <div>
-                                                    <h4 class="text-white">Email</h4>
-                                                    <p class="mb-0">BinaDesa@gmail.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6 col-xl-4">
-                                            <div class="d-flex">
-                                                <div class="btn-xl-square bg-primary text-white rounded p-4 me-4">
-                                                    <i class="fa fa-phone-alt fa-2x"></i>
-                                                </div>
-                                                <div>
-                                                    <h4 class="text-white">Hotline</h4>
-                                                    <p class="mb-0">(+62) 822-9270-7434 (Lapor & Info)</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    </a>
                                 </div>
+
+                                <!-- Email -->
+                                <div class="col-lg-4">
+                                    <a href="mailto:suararakyat@gmail.com" class="text-white text-decoration-none">
+                                        <div class="footer-contact-card">
+                                            <div class="footer-contact-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Email</div>
+                                                <small class="text-white-50">suararakyat@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="col-lg-4">
+                                    <a href="tel:+6282292707434" class="text-white text-decoration-none">
+                                        <div class="footer-contact-card">
+                                            <div class="footer-contact-icon">
+                                                <i class="fa fa-phone-alt"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Hotline</div>
+                                                <small class="text-white-50">(+62) 822-9270-7434 (Lapor &
+                                                    Info)</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
 
                     </div>
 
+                    <!-- RIGHT SIDE: SUBSCRIBE -->
                     <div class="col-xl-3">
                         <div class="footer-item">
+
                             <h4 class="text-white mb-4">Berlangganan Update</h4>
-                            <p class="text-white mb-3">Dapatkan pemberitahuan tentang status laporan, panduan
-                                pelaporan,
-                                dan pengumuman penting.</p>
+                            <p class="text-white mb-3">
+                                Dapatkan pemberitahuan tentang status laporan & informasi penting.
+                            </p>
+
                             <form class="position-relative rounded-pill mb-4" onsubmit="return false;">
                                 <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="email"
-                                    placeholder="Masukkan email Anda" aria-label="email langganan">
+                                    placeholder="Masukkan email Anda">
                                 <button type="button"
-                                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Daftar</button>
+                                    class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">
+                                    Daftar
+                                </button>
                             </form>
 
-                            <div class="d-flex flex-shrink-0">
-                                <div class="footer-btn">
-                                    <a href="tel:+6282292707434"
-                                        class="btn btn-lg-square rounded-circle position-relative wow tada"
-                                        data-wow-delay=".9s" aria-label="call">
-                                        <i class="fa fa-phone-alt fa-2x"></i>
-                                        <div class="position-absolute" style="top: 2px; right: 12px;">
-                                            <span><i class="fa fa-comment-dots text-secondary"></i></span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="d-flex flex-column ms-3 flex-shrink-0">
+                            <div class="d-flex">
+                                <a href="tel:+6282292707434"
+                                    class="btn btn-lg-square rounded-circle position-relative wow tada"
+                                    data-wow-delay=".9s">
+                                    <i class="fa fa-phone-alt fa-2x"></i>
+                                    <div class="position-absolute" style="top:2px; right:12px;">
+                                        <i class="fa fa-comment-dots text-secondary"></i>
+                                    </div>
+                                </a>
+                                <div class="d-flex flex-column ms-3">
                                     <span class="text-white">Butuh Bantuan?</span>
-                                    <a href="tel:+6282292707434"><span class="text-white">Hubungi Hotline: (+62)
-                                            822-9270-7434</span></a>
+                                    <a href="tel:+6282292707434" class="text-white">
+                                        Hotline: (+62) 822-9270-7434
+                                    </a>
                                 </div>
                             </div>
 
@@ -718,15 +854,122 @@
         <!-- Floating WhatsApp Button -->
         <div id="whatsapp-float" class="whatsapp-float">
             <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda."
-                target="_blank" class="whatsapp-btn btn btn-success rounded-circle p-3" title="Hubungi via WhatsApp"
-                aria-label="WhatsApp">
-                <i class="fab fa-whatsapp fa-lg text-white"></i>
+                target="_blank" class="whatsapp-btn" title="Hubungi via WhatsApp" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
             </a>
         </div>
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top" id="backToTop"
-            aria-label="kembali ke atas"><i class="fa fa-arrow-up"></i></a>
+        <a href="#" class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+        <style>
+            /* ===== Floating WhatsApp Button ===== */
+            .whatsapp-float {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                z-index: 1000;
+                animation: floatAnim 3s ease-in-out infinite;
+            }
+
+            .whatsapp-btn,
+            .back-to-top {
+                /* ukuran disamakan */
+                width: 60px;
+                height: 60px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                border-radius: 50%;
+                font-size: 28px;
+                color: #fff;
+
+                box-shadow:
+                    0 6px 15px rgba(0, 0, 0, 0.25),
+                    0 0 10px rgba(0, 0, 0, 0.1);
+
+                transition: .3s ease-in-out;
+            }
+
+            /* WhatsApp Button */
+            .whatsapp-btn {
+                background: linear-gradient(135deg, #25d366, #1eb257);
+            }
+
+            .whatsapp-btn:hover {
+                transform: scale(1.12) translateY(-3px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(37, 211, 102, 0.6);
+            }
+
+            /* Floating animation */
+            @keyframes floatAnim {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-6px);
+                }
+            }
+
+            /* ===== Back To Top ===== */
+            .back-to-top {
+                background: linear-gradient(135deg, #0d6efd, #6610f2);
+                right: 25px;
+                /* Biar sama dengan WA */
+                opacity: 0;
+                visibility: hidden;
+                z-index: 999;
+            }
+
+            .back-to-top:hover {
+                transform: scale(1.12) translateY(-3px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(13, 110, 253, 0.6);
+            }
+
+            /* Show state */
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        </style>
+
+        <script>
+            // Element references
+            const backToTop = document.getElementById('backToTop');
+            const whatsapp = document.getElementById('whatsapp-float');
+
+            // Show/hide back to top
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) backToTop.classList.add('show');
+                else backToTop.classList.remove('show');
+            });
+
+            // Smooth scroll
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Back to Top mengikuti posisi WA
+            function updateBackToTopPosition() {
+                const whatsappHeight = whatsapp.offsetHeight || 65;
+                backToTop.style.bottom = (whatsappHeight + 40) + 'px'; // jarak 40px di atas WA
+            }
+
+            window.addEventListener('resize', updateBackToTopPosition);
+            window.addEventListener('load', updateBackToTopPosition);
+        </script>
+
 
         <!-- Copyright -->
         <div class="container-fluid copyright py-4 bg-dark">
@@ -734,11 +977,12 @@
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-end mb-md-0">
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                    class="fas fa-copyright text-light me-2"></i>Bina Desa</a>, All right
+                                    class="fas fa-copyright text-light me-2"></i>Suara Rakyat</a>, All right
                             reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-start text-body">
-                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                        Designed By <a class="border-bottom text-white"
+                            href="https://www.instagram.com/pikpuks_">Muhammad Taufiq</a>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
 
         {{-- Dropdown Pilihan Kategori --}}
 
-        
+
         {{-- filter form --}}
         <div class="card mb-4 p-3 shadow-sm">
             <form method="GET" action="">
@@ -63,8 +63,9 @@
                 <div class="col-md-4 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 rounded-4 text-center p-3 hover-shadow">
                         {{-- Gambar kategori (opsional) --}}
-                        <img src="{{ $kategori->gambar ? asset('storage/' . $kategori->gambar) : 'https://via.placeholder.com/100' }}"
-                            class="rounded-circle mx-auto mb-3" width="90" height="90" alt="Foto kategori">
+                        <img src="{{ $kategori->gambar ? asset('storage/' . $kategori->gambar) : asset('assets/img/placeholder.png') }}"
+                            class="rounded-circle mx-auto mb-3" width="90" height="90">
+
 
                         {{-- Nama kategori --}}
                         <h5 class="fw-bold text-dark mb-0">{{ $kategori->nama }}</h5>
