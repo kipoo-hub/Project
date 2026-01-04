@@ -108,85 +108,193 @@
         </div>
         <!-- Topbar End -->
 
-        <!-- Navbar Start -->
-        <div class="container-fluid nav-bar bg-white shadow-sm">
+        <style>
+            /* NAVBAR */
+            .navbar-custom {
+                background: rgba(255, 255, 255, .96);
+                backdrop-filter: blur(12px);
+                box-shadow: 0 6px 24px rgba(0, 0, 0, .05);
+                padding: 12px 0;
+                transition: .25s ease;
+            }
+
+            .navbar-custom.scrolled {
+                padding: 8px 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+            }
+
+            /* MENU ITEMS */
+            .navbar-nav .nav-link {
+                color: #4b5563;
+                font-weight: 500;
+                font-size: .95rem;
+                padding: 8px 16px !important;
+                border-radius: 50px;
+                margin: 0 4px;
+                transition: .25s;
+            }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link.active {
+                color: #0d6efd;
+                background: rgba(13, 110, 253, .06);
+            }
+
+            /* DROPDOWN */
+            .dropdown-menu {
+                border: none;
+                border-radius: 14px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+                padding: 10px;
+            }
+
+            .dropdown-item {
+                border-radius: 8px;
+                padding: 10px 14px;
+            }
+
+            .dropdown-item:hover {
+                background: #f3f4f6;
+                color: #0d6efd;
+                transform: translateX(4px);
+            }
+
+            /* AVATAR */
+            .user-avatar {
+                border: 2px solid #e5e7eb;
+                transition: border-color .25s, transform .25s;
+            }
+
+            .nav-link:hover .user-avatar {
+                border-color: #0d6efd;
+                transform: scale(1.05);
+            }
+
+            /* MOBILE */
+            @media (max-width:991px) {
+                .navbar-nav .nav-link {
+                    text-align: center;
+                    margin-bottom: 4px;
+                }
+            }
+        </style>
+
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light py-3">
 
-                    <!-- Logo / Brand -->
-                    <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center gap-3">
-                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Suara Rakyat"
-                            style="height: 130px; width: auto; object-fit: contain;">
+                {{-- Logo --}}
+                <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="{{ route('home') }}">
+                    <img src="{{ asset('assets/img/logo.png') }}" height="40" alt="Logo">
+                    <span class="d-none d-sm-inline">Suara Rakyat</span>
+                </a>
 
-                        <div class="d-flex flex-column justify-content-center">
-                            <span class="fw-bold text-primary" style="font-size: 22px; line-height: 1.2;">Suara
-                                Rakyat</span>
-                            <span class="text-muted" style="font-size: 14px; line-height: 1.2;">Pengaduan &
-                                Aspirasi</span>
-                        </div>
-                    </a>
+                {{-- Toggle --}}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <!-- Toggler Button -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars"></span>
-                    </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
 
-                    <!-- Navbar Links -->
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a href="{{ route('home') }}"
-                                    class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
-                            <li class="nav-item"><a href="{{ route('pengaduan.index') }}"
-                                    class="nav-link {{ request()->routeIs('pengaduan.*') ? 'active' : '' }}">Pengaduan</a>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('kategori.index') }}"
-                                    class="nav-link {{ request()->routeIs('kategori.*') ? 'active' : '' }}">Kategori</a>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('about') }}"
-                                    class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"><i
-                                        class="fas fa-info-circle me-1"></i> Tentang</a></li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle"
-                                    data-bs-toggle="dropdown">Status</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('tindak.index') }}" class="dropdown-item">Tindak Lanjut</a>
-                                    </li>
-                                    <li><a href="{{ route('penilaian.index') }}" class="dropdown-item">Penilaian</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    {{-- CENTER MENU --}}
+                    <div class="navbar-nav mx-auto align-items-center">
 
-                        <!-- Login / Profile -->
-                        <div class="d-flex">
-                            @auth
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4 dropdown-toggle"
-                                        data-bs-toggle="dropdown">
-                                        <i class="fas fa-user me-1"></i> {{ Auth::user()->name }}
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                            href="{{ route('home') }}">Beranda</a>
+
+                        <a class="nav-link {{ request()->routeIs('pengaduan.*') ? 'active' : '' }}"
+                            href="{{ route('pengaduan.index') }}">Pengaduan</a>
+
+                        <a class="nav-link {{ request()->routeIs('kategori.*') ? 'active' : '' }}"
+                            href="{{ route('kategori.index') }}">Kategori</a>
+
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">Tentang</a>
+
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle
+                        {{ request()->routeIs('tindak.*') || request()->routeIs('penilaian.*') ? 'active' : '' }}"
+                                data-bs-toggle="dropdown">
+                                Status
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('tindak.*') ? 'active' : '' }}"
+                                        href="{{ route('tindak.index') }}">
+                                        <i class="fas fa-tasks me-2 text-muted"></i> Tindak Lanjut
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
-                                        <li>
-                                            <form action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item">Logout</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-4">
-                                    <i class="fas fa-sign-in-alt me-1"></i> Login
-                                </a>
-                            @endauth
+                                </li>
+                                <li>
+                                    <a class="dropdown-item {{ request()->routeIs('penilaian.*') ? 'active' : '' }}"
+                                        href="{{ route('penilaian.index') }}">
+                                        <i class="fas fa-star me-2 text-muted"></i> Penilaian
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+
                     </div>
-                </nav>
+
+                    {{-- RIGHT SECTION --}}
+                    <div class="d-flex align-items-center ms-lg-4 mt-3 mt-lg-0">
+
+                        @guest
+                            <a href="{{ route('login') }}"
+                                class="btn btn-primary rounded-pill px-4 fw-semibold shadow-sm">
+                                Login <i class="fas fa-arrow-right ms-2 small"></i>
+                            </a>
+                        @else
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 p-0"
+                                    data-bs-toggle="dropdown">
+
+                                    <div class="text-end d-none d-lg-block me-1">
+                                        <small class="text-muted"></small>
+                                        <span class="fw-bold text-dark">{{ Auth::user()->name }}</span>
+                                    </div>
+
+                                    {{-- FOTO PROFIL (PAKAI profile_picture) --}}
+                                    <img src="{{ Auth::user()->profile_picture
+                                        ? asset('uploads/profile/' . Auth::user()->profile_picture)
+                                        : asset('assets/img/avatar-default.png') }}"
+                                        class="rounded-circle user-avatar" width="40" height="40"
+                                        style="object-fit:cover">
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end mt-3">
+
+                                    <li class="px-3 py-2 border-bottom d-block d-lg-none">
+                                        <span class="fw-bold">{{ Auth::user()->name }}</span>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('profile') }}">
+                                            <i class="fas fa-user-circle me-2 text-primary"></i> Profil Saya
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="dropdown-item text-danger fw-semibold">
+                                                <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                                            </button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        @endguest
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <!-- Navbar End -->
+        </nav>
     </header>
 
 
@@ -669,7 +777,7 @@
 
                                         <a href="{{ url('/') }}"
                                             class="navbar-brand p-0 d-flex align-items-center gap-3 mb-3">
-                                            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Suara Rakyat"
+                                            <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo Suara Rakyat"
                                                 style="height: 60px; object-fit: contain;">
 
                                             <div class="d-flex flex-column">
@@ -751,20 +859,18 @@
                             </div>
                         </div>
 
-                        <!-- CONTACT SECTION PREMIUM -->
                         <div class="pt-5" style="border-top:1px solid rgba(255,255,255,0.08);">
-                            <div class="row g-4">
+                            <div class="row g-4 justify-content-center">
 
-                                <!-- Address -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-md-6">
                                     <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Umban+Sari+Publik+No.12,+Pekanbaru"
                                         target="_blank" class="text-white text-decoration-none">
-                                        <div class="footer-contact-card">
-                                            <div class="footer-contact-icon">
-                                                <i class="fas fa-map-marker-alt"></i>
+                                        <div class="footer-contact-card d-flex align-items-center p-3 h-100 rounded-3">
+                                            <div class="footer-contact-icon me-3">
+                                                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
                                             </div>
                                             <div>
-                                                <div class="fw-semibold">Alamat</div>
+                                                <div class="fw-bold fs-6">Alamat</div>
                                                 <small class="text-white-50">Jl. Umban Sari Publik No.12,
                                                     Pekanbaru</small>
                                             </div>
@@ -772,32 +878,29 @@
                                     </a>
                                 </div>
 
-                                <!-- Email -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-md-6">
                                     <a href="mailto:suararakyat@gmail.com" class="text-white text-decoration-none">
-                                        <div class="footer-contact-card">
-                                            <div class="footer-contact-icon">
-                                                <i class="fas fa-envelope"></i>
+                                        <div class="footer-contact-card d-flex align-items-center p-3 h-100 rounded-3">
+                                            <div class="footer-contact-icon me-3">
+                                                <i class="fas fa-envelope fa-2x text-primary"></i>
                                             </div>
                                             <div>
-                                                <div class="fw-semibold">Email</div>
+                                                <div class="fw-bold fs-6">Email</div>
                                                 <small class="text-white-50">suararakyat@gmail.com</small>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
 
-                                <!-- Phone -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-md-6">
                                     <a href="tel:+6282292707434" class="text-white text-decoration-none">
-                                        <div class="footer-contact-card">
-                                            <div class="footer-contact-icon">
-                                                <i class="fa fa-phone-alt"></i>
+                                        <div class="footer-contact-card d-flex align-items-center p-3 h-100 rounded-3">
+                                            <div class="footer-contact-icon me-3">
+                                                <i class="fa fa-phone-alt fa-2x text-primary"></i>
                                             </div>
                                             <div>
-                                                <div class="fw-semibold">Hotline</div>
-                                                <small class="text-white-50">(+62) 822-9270-7434 (Lapor &
-                                                    Info)</small>
+                                                <div class="fw-bold fs-6">Hotline</div>
+                                                <small class="text-white-50">(+62) 822-9270-7434 (Lapor & Info)</small>
                                             </div>
                                         </div>
                                     </a>
@@ -874,30 +977,19 @@
                 animation: floatAnim 3s ease-in-out infinite;
             }
 
-            .whatsapp-btn,
-            .back-to-top {
-                /* ukuran disamakan */
+            /* WhatsApp Button */
+            .whatsapp-btn {
                 width: 60px;
                 height: 60px;
-
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
                 border-radius: 50%;
                 font-size: 28px;
                 color: #fff;
-
-                box-shadow:
-                    0 6px 15px rgba(0, 0, 0, 0.25),
-                    0 0 10px rgba(0, 0, 0, 0.1);
-
-                transition: .3s ease-in-out;
-            }
-
-            /* WhatsApp Button */
-            .whatsapp-btn {
                 background: linear-gradient(135deg, #25d366, #1eb257);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, .25), 0 0 10px rgba(0, 0, 0, .1);
+                transition: .3s ease-in-out;
             }
 
             .whatsapp-btn:hover {
@@ -920,23 +1012,24 @@
 
             /* ===== Back To Top ===== */
             .back-to-top {
-                background: linear-gradient(135deg, #0d6efd, #6610f2);
-                right: 25px;
-                /* Biar sama dengan WA */
-                opacity: 0;
-                visibility: hidden;
-                z-index: 999;
-            }
+                position: fixed;
+                right: 20px;
+                bottom: 25px;
+                width: 55px;
+                height: 55px;
 
-            .back-to-top:hover {
-                transform: scale(1.12) translateY(-3px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(13, 110, 253, 0.6);
-            }
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-            /* Show state */
-            .back-to-top.show {
-                opacity: 1;
-                visibility: visible;
+
+                border-radius: 50%;
+                background: linear-gradient(135deg, #0d6efd, #6f42c1);
+                color: #fff;
+                font-size: 20px;
+
+                box-shadow: 0 8px 25px rgba(0, 0, 0, .15);
+                cursor: pointer;
             }
         </style>
 
@@ -1002,38 +1095,7 @@
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
-    <script>
-        // Better UX: hide spinner and show back-to-top after scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const spinner = document.getElementById('spinner');
-            if (spinner) {
-                spinner.classList.remove('show');
-                spinner.style.display = 'none';
-            }
-
-            // Back to top visibility
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTop.style.display = 'inline-block';
-                } else {
-                    backToTop.style.display = 'none';
-                }
-            });
-            backToTop.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Optional: initialize wow.js if present
-        if (typeof WOW !== 'undefined') {
-            new WOW().init();
-        }
-    </script>
+    
 
 </body>
 

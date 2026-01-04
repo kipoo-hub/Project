@@ -10,8 +10,8 @@ class PenilaianLayananController extends Controller
     public function index()
     {
         $penilaian = PenilaianLayanan::with('pengaduan')
-        ->filter(request()->all())
-        ->paginate(12);
+            ->filter(request()->all())
+            ->paginate(12);
         return view('pages.penilaian.index', compact('penilaian'));
     }
 
@@ -24,13 +24,20 @@ class PenilaianLayananController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pengaduan_id' => 'required',
+            'pengaduan_id' => 'required|exists:pengaduans,id',
             'rating'       => 'required|integer|min:1|max:5',
             'komentar'     => 'nullable|string',
         ]);
 
-        PenilaianLayanan::create($request->all());
-        return redirect()->route('penilaian.index')->with('success', 'Penilaian berhasil ditambahkan.');
+        PenilaianLayanan::create([
+            'pengaduan_id' => $request->pengaduan_id,
+            'rating'       => $request->rating,
+            'komentar'     => $request->komentar,
+            'user_id'      => auth()->id(),
+        ]);
+
+        return redirect()->route('penilaian.index')
+            ->with('success', 'Penilaian berhasil ditambahkan!');
     }
 
     public function edit(PenilaianLayanan $penilaian)

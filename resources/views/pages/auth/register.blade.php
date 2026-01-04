@@ -1,84 +1,152 @@
 @extends('layouts.guest.auth')
 
-@section('title', 'Daftar Akun')
+@section('title', 'Daftar Akun - Suara Rakyat')
 
 @section('style')
 <style>
-    .register-card {
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 40px;
-        width: 450px;
-        color: #fff;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    body{
+        min-height:100vh;
+        margin:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#0d6efd,#0746a7);
+        font-family:'Segoe UI',sans-serif;
+        padding:20px;
     }
 
-    .register-card label {
-        color: #fff;
-        font-weight: 500;
+    .register-wrapper{
+        max-width:460px;
+        width:100%;
     }
 
-    .btn-register {
-        border-radius: 10px;
-        font-weight: 600;
-        padding: 10px;
-        font-size: 16px;
+    .card-register{
+        background:rgba(255,255,255,.9);
+        backdrop-filter:blur(14px);
+        border-radius:22px;
+        padding:36px 32px;
+        box-shadow:0 18px 60px rgba(0,0,0,.18);
+        animation:fade .4s ease-out;
     }
 
-    .text-link a {
-        color: white;
-        text-decoration: underline;
-        font-weight: 600;
+    @keyframes fade{
+        from{opacity:0;transform:translateY(15px)}
+        to{opacity:1;transform:translateY(0)}
+    }
+
+    .logo-box{
+        text-align:center;
+        margin-bottom:16px;
+    }
+
+    .title{
+        text-align:center;
+        margin-bottom:22px;
+    }
+
+    .title h3{
+        margin:0;
+        color:#0d6efd;
+        font-weight:700;
+    }
+
+    .title small{
+        color:#6c757d;
+    }
+
+    .form-control{
+        height:48px;
+        border-radius:12px;
+    }
+
+    .btn-primary{
+        width:100%;
+        height:48px;
+        border-radius:12px;
+        font-weight:600;
+        letter-spacing:.3px;
+    }
+
+    .btn-primary:hover{
+        transform:translateY(-2px);
+        box-shadow:0 10px 20px rgba(13,110,253,.25);
+    }
+
+    .footer-text{
+        margin-top:20px;
+        text-align:center;
+        color:#6c757d;
+    }
+
+    .footer-text a{
+        color:#0d6efd;
+        font-weight:600;
+        text-decoration:none;
     }
 </style>
 @endsection
 
+
 @section('content')
-<div class="register-card">
 
-    <h2 class="text-center mb-4 fw-bold">Daftar Akun</h2>
+<div class="register-wrapper">
 
-    {{-- Alert --}}
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <div class="card-register">
 
-    @if($errors->any())
-        <div class="alert alert-danger">{{ $errors->first() }}</div>
-    @endif
-
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <div class="mb-3">
-            <label>Nama Lengkap</label>
-            <input type="text" name="name" class="form-control" required>
+        <div class="logo-box">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="height:70px;">
         </div>
 
-        <div class="mb-3">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" required>
+        <div class="title">
+            <h3>Buat Akun Baru</h3>
+            <small>Isi data di bawah untuk mendaftar</small>
         </div>
 
-        <div class="mb-3">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
+        {{-- Alerts --}}
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
-        <div class="mb-3">
-            <label>Konfirmasi Password</label>
-            <input type="password" name="password_confirmation" class="form-control" required>
-        </div>
+        @if($errors->any())
+            <div class="alert alert-danger">{{ $errors->first() }}</div>
+        @endif
 
-        <button type="submit" class="btn btn-light w-100 btn-register">
-            Daftar Sekarang
-        </button>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-        <p class="mt-4 text-center text-link">
-            Sudah punya akun? <a href="{{ route('login') }}">Login disini</a>
-        </p>
-    </form>
+            <div class="mb-3">
+                <label>Nama Lengkap</label>
+                <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Konfirmasi Password</label>
+                <input type="password" name="password_confirmation" class="form-control" required>
+            </div>
+
+            <button class="btn btn-primary mt-2">
+                Daftar
+            </button>
+
+            <p class="footer-text">
+                Sudah punya akun?
+                <a href="{{ route('login') }}">Login di sini</a>
+            </p>
+
+        </form>
+
+    </div>
 
 </div>
+
 @endsection

@@ -55,63 +55,62 @@ class Pengaduan extends Model
     }
 
     public function scopeFilter($query, $filters)
-{
-    // Pencarian berdasarkan judul / deskripsi / nomor tiket
-    if (!empty($filters['search'])) {
-        $search = $filters['search'];
-        $query->where(function($q) use ($search) {
-            $q->where('judul', 'like', "%$search%")
-              ->orWhere('deskripsi', 'like', "%$search%")
-              ->orWhere('nomor_tiket', 'like', "%$search%");
-        });
+    {
+        // Pencarian berdasarkan judul / deskripsi / nomor tiket
+        if (! empty($filters['search'])) {
+            $search = $filters['search'];
+            $query->where(function ($q) use ($search) {
+                $q->where('judul', 'like', "%$search%")
+                    ->orWhere('deskripsi', 'like', "%$search%")
+                    ->orWhere('nomor_tiket', 'like', "%$search%");
+            });
+        }
+
+        // Filter berdasarkan status
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
+
+        // Filter kategori
+        if (! empty($filters['kategori_id'])) {
+            $query->where('kategori_id', $filters['kategori_id']);
+        }
+
+        // Filter RT
+        if (! empty($filters['rt'])) {
+            $query->where('rt', $filters['rt']);
+        }
+
+        // Filter RW
+        if (! empty($filters['rw'])) {
+            $query->where('rw', $filters['rw']);
+        }
+
+        // Filter berdasarkan pelapor
+        if (! empty($filters['warga_id'])) {
+            $query->where('warga_id', $filters['warga_id']);
+        }
+
+                                             // Filter anonim / tidak
+        if (! empty($filters['is_anonim'])) { // "1" atau "0"
+            $query->where('is_anonim', $filters['is_anonim']);
+        }
+
+        // Filter berdasarkan kategori (relasi)
+        if (! empty($filters['kategori_nama'])) {
+            $query->whereHas('kategori', function ($q) use ($filters) {
+                $q->where('nama', 'like', '%' . $filters['kategori_nama'] . '%');
+            });
+        }
+
+        // Filter berdasarkan warga nama (relasi user)
+        if (! empty($filters['warga_nama'])) {
+            $query->whereHas('warga', function ($q) use ($filters) {
+                $q->where('name', 'like', '%' . $filters['warga_nama'] . '%');
+            });
+        }
+
+        return $query;
     }
-
-    // Filter berdasarkan status
-    if (!empty($filters['status'])) {
-        $query->where('status', $filters['status']);
-    }
-
-    // Filter kategori
-    if (!empty($filters['kategori_id'])) {
-        $query->where('kategori_id', $filters['kategori_id']);
-    }
-
-    // Filter RT
-    if (!empty($filters['rt'])) {
-        $query->where('rt', $filters['rt']);
-    }
-
-    // Filter RW
-    if (!empty($filters['rw'])) {
-        $query->where('rw', $filters['rw']);
-    }
-
-    // Filter berdasarkan pelapor
-    if (!empty($filters['warga_id'])) {
-        $query->where('warga_id', $filters['warga_id']);
-    }
-
-    // Filter anonim / tidak
-    if (!empty($filters['is_anonim'])) {   // "1" atau "0"
-        $query->where('is_anonim', $filters['is_anonim']);
-    }
-
-    // Filter berdasarkan kategori (relasi)
-    if (!empty($filters['kategori_nama'])) {
-        $query->whereHas('kategori', function($q) use ($filters) {
-            $q->where('nama', 'like', '%'.$filters['kategori_nama'].'%');
-        });
-    }
-
-    // Filter berdasarkan warga nama (relasi user)
-    if (!empty($filters['warga_nama'])) {
-        $query->whereHas('warga', function($q) use ($filters) {
-            $q->where('name', 'like', '%'.$filters['warga_nama'].'%');
-        });
-    }
-
-    return $query;
-}
-
 
 }

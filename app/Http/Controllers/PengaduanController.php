@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\KategoriPengaduan;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PengaduanController extends Controller
 {
@@ -14,17 +13,16 @@ class PengaduanController extends Controller
      * Menampilkan daftar pengaduan.
      */
     public function index()
-{
-    $kategoris = KategoriPengaduan::orderBy('nama')->get(); // kategori untuk filter/dropdown
+    {
+        $kategoris = KategoriPengaduan::orderBy('nama')->get(); // kategori untuk filter/dropdown
 
-    $pengaduans = Pengaduan::with(['kategori', 'warga'])
-        ->filter(request()->all())
-        ->orderBy('created_at', 'desc')
-        ->paginate(12);
+        $pengaduans = Pengaduan::with(['kategori', 'warga'])
+            ->filter(request()->all())
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
 
-    return view('pages.pengaduan.index', compact('pengaduans', 'kategoris'));
-}
-
+        return view('pages.pengaduan.index', compact('pengaduans', 'kategoris'));
+    }
 
     /**
      * Formulir membuat pengaduan baru.
