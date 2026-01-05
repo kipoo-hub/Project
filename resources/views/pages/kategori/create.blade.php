@@ -15,12 +15,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Kategori</label>
-                                <select name="nama" id="nama" class="form-select" required>
-                                    <option value="">-- Pilih Kategori --</option>
-                                    @foreach ($nama_kategori as $kategori)
-                                        <option value="{{ $kategori }}">{{ $kategori }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="nama" id="nama" class="form-control"
+                                    placeholder="Masukkan nama kategori baru" value="{{ old('nama') }}" required>
                                 @error('nama')
                                     <div class="text-danger small">{{ $message }}</div>
                                 @enderror
